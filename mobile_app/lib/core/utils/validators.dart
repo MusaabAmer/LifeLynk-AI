@@ -1,49 +1,45 @@
 class Validators {
-  static String? validateEmail(String? value) {
+  Validators._();
+
+  static String? requiredField(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Email is required';
-    }
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!emailRegex.hasMatch(value.trim())) {
-      return 'Please enter a valid email address';
+      return "This field is required";
     }
     return null;
   }
 
-  static String? validatePassword(String? value) {
+  static String? email(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required';
+      return "Email is required";
     }
-    if (value.length < 6) {
-      return 'Password must be at least 6 characters long';
+
+    final regex =
+        RegExp(r'^[^@]+@[^@]+\.[^@]+');
+
+    if (!regex.hasMatch(value)) {
+      return "Enter a valid email";
     }
+
     return null;
   }
 
-  static String? validateConfirmPassword(String? value, String originalPassword) {
+  static String? phone(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Confirm password is required';
+      return "Phone number is required";
     }
-    if (value != originalPassword) {
-      return 'Passwords do not match';
+
+    if (value.length < 11) {
+      return "Invalid phone number";
     }
+
     return null;
   }
 
-  static String? validatePhone(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return 'Phone number is required';
+  static String? password(String? value) {
+    if (value == null || value.length < 8) {
+      return "Minimum 8 characters";
     }
-    if (value.trim().length < 10) {
-      return 'Please enter a valid phone number';
-    }
-    return null;
-  }
 
-  static String? validateRequired(String? value, String fieldName) {
-    if (value == null || value.trim().isEmpty) {
-      return '$fieldName is required';
-    }
     return null;
   }
 }

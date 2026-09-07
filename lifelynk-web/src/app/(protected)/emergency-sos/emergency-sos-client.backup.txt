@@ -1,0 +1,813 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+
+import { createClient } from "@/lib/supabase/client";
+
+import type {
+EmergencySosData,
+EmergencySosRecord,
+} from "@/lib/dashboard/get-emergency-sos-data";
+
+import "./emergency-sos.css";
+
+interface Props {
+data: EmergencySosData;
+userRole: string;
+}
+
+type SosAction = "ACTIVE" | "RESOLVED" | "CANCELLED";
+
+function formatDate(value: string) {
+try {
+return new Intl.DateTimeFormat("en-PK", {
+dateStyle: "medium",
+timeStyle: "short",
+}).format(new Date(value));
+} catch {
+return value;
+}
+}
+
+function statusLabel(status: string) {
+return status
+.replace(/[_-]/g, " ")
+.replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function urgencyLabel(urgency: string) {
+return urgency
+.replace(/[_-]/g, " ")
+.replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function getStatusClass(status: string) {
+const value = status.toLowerCase();
+
+if (value.includes("active")) return "sos-status active";
+
+if (value.includes("pending")) return "sos-status pending";
+
+if (
+value.includes("resolved") ||
+value.includes("complete") ||
+value.includes("fulfilled")
+) {
+return "sos-status resolved";
+}
+
+if (
+value.includes("cancel") ||
+value.includes("closed")
+) {
+return "sos-status cancelled";
+}
+
+return "sos-status";
+}
+
+function getUrgencyClass(urgency: string) {
+const value = urgency.toLowerCase();
+
+if (
+value.includes("critical") ||
+value.includes("emergency")
+) {
+return "sos-urgency critical";
+}
+
+if (value.includes("urgent")) {
+return "sos-urgency urgent";
+}
+
+return "sos-urgency normal";
+}
+
+function locationText(record: EmergencySosRecord) {
+const city = record.cities?.name;
+const province = record.cities?.provinces?.name;
+
+if (city && province) {
+return `${city}, ${province}`;
+}
+
+return city ?? "Location unavailable";
+}
+
+function normalizedStatus(status: string) {
+return status.trim().toLowerCase();
+}
+
+function canActivate(status: string) {
+return normalizedStatus(status).includes("pending");
+}
+
+function canResolve(status: string) {
+return normalizedStatus(status).includes("active");
+}
+
+function canCancel(status: string) {
+const value = normalizedStatus(status);
+
+return (
+value.includes("pending") ||
+value.includes("active")
+);
+}
+
+export default function EmergencySosClient({
+data,
+userRole,
+}: Props) {
+const [filter, setFilter] = useState("ALL");
+const [search, setSearch] = useState("");
+const [selected, setSelected] =
+useState<EmergencySosRecord | null>(null);
+
+const [actionLoading, setActionLoading] =
+useState<SosAction | null>(null);
+
+const [actionError, setActionError] =
+useState<string | null>(null);
+
+const [actionSuccess, setActionSuccess] =
+useState<string | null>(null);
+
+useEffect(() => {
+  const supabase = createClient();
+
+  const channel = supabase
+    .channel("emergency-sos-realtime")
+    .on(
+      "postgres_changes",
+      {
+        event: "*",
+        schema: "public",
+        table: "emergency_sos",
+      },
+      () => {
+        window.location.reload();
+      },
+    )
+    .subscribe();
+
+  return () => {
+    supabase.removeChannel(channel);
+  };
+}, []);
+
+const filteredRecords = useMemo(() => {
+const searchValue = search.trim().toLowerCase();
+
+
+return data.records.filter((record) => {
+  const status = record.status.toLowerCase();
+
+  const matchesFilter =
+    filter === "ALL" ||
+    (filter === "ACTIVE" &&
+      (status.includes("active") ||
+        status.includes("pending"))) ||
+    (filter === "RESOLVED" &&
+      (status.includes("resolved") ||
+        status.includes("complete") ||
+        status.includes("fulfilled"))) ||
+    (filter === "CANCELLED" &&
+      status.includes("cancel"));
+
+  if (!matchesFilter) {
+    return false;
+  }
+
+  if (!searchValue) {
+    return true;
+  }
+
+  const searchable = [
+    record.id,
+    record.users?.full_name,
+    record.users?.email,
+    record.blood_groups?.code,
+    record.blood_groups?.name,
+    record.cities?.name,
+    record.cities?.provinces?.name,
+    record.status,
+    record.urgency_level,
+    record.description,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  return searchable.includes(searchValue);
+});
+
+
+}, [data.records, filter, search]);
+
+async function updateSosStatus(
+record: EmergencySosRecord,
+nextStatus: SosAction,
+) {
+if (actionLoading) {
+return;
+}
+
+
+setActionLoading(nextStatus);
+setActionError(null);
+setActionSuccess(null);
+
+const supabase = createClient();
+
+const { error } = await supabase
+  .from("emergency_sos")
+  .update({
+    status: nextStatus,
+  })
+  .eq("id", record.id);
+
+if (error) {
+  console.error(
+    "EMERGENCY SOS - UPDATE ERROR",
+    error,
+  );
+
+  setActionError(
+    error.message ||
+      "Unable to update this emergency request.",
+  );
+
+  setActionLoading(null);
+  return;
+}
+
+const message =
+  nextStatus === "ACTIVE"
+    ? "Emergency SOS accepted and activated."
+    : nextStatus === "RESOLVED"
+      ? "Emergency SOS marked as resolved."
+      : "Emergency SOS cancelled.";
+
+setActionSuccess(message);
+setActionLoading(null);
+
+setSelected((current) =>
+  current
+    ? {
+        ...current,
+        status: nextStatus,
+      }
+    : current,
+);
+
+/*
+ * Refresh the server-rendered page.
+ *
+ * This causes getEmergencySosData() to execute again,
+ * updating the table and summary cards from Supabase.
+ */
+window.location.reload();
+
+
+}
+
+return ( <main className="emergency-sos-page"> <section className="sos-header"> <div> <div className="sos-eyebrow">
+EMERGENCY RESPONSE </div>
+
+
+      <h1>Emergency SOS</h1>
+
+      <p>
+        Monitor and respond to emergency blood requests
+        across the LifeLynk healthcare network.
+      </p>
+    </div>
+
+    <div className="sos-header-role">
+      <span>Access</span>
+
+      <strong>
+        {userRole.replace(/_/g, " ")}
+      </strong>
+    </div>
+  </section>
+
+  {data.error && (
+    <div className="sos-error">
+      <strong>
+        Unable to load emergency requests.
+      </strong>
+
+      <span>
+        Please refresh the page and try again.
+      </span>
+    </div>
+  )}
+
+  {actionError && (
+    <div className="sos-error">
+      <strong>
+        Emergency request update failed.
+      </strong>
+
+      <span>{actionError}</span>
+    </div>
+  )}
+
+  {actionSuccess && (
+    <div className="sos-success">
+      <strong>{actionSuccess}</strong>
+    </div>
+  )}
+
+  <section className="sos-stat-grid">
+    <div className="sos-stat-card">
+      <span className="sos-stat-label">
+        Total SOS
+      </span>
+
+      <strong>{data.summary.total}</strong>
+
+      <span className="sos-stat-description">
+        Requests visible to your account
+      </span>
+    </div>
+
+    <div className="sos-stat-card sos-stat-active">
+      <span className="sos-stat-label">
+        Active
+      </span>
+
+      <strong>{data.summary.active}</strong>
+
+      <span className="sos-stat-description">
+        Currently active emergencies
+      </span>
+    </div>
+
+    <div className="sos-stat-card sos-stat-pending">
+      <span className="sos-stat-label">
+        Pending
+      </span>
+
+      <strong>{data.summary.pending}</strong>
+
+      <span className="sos-stat-description">
+        Waiting for response
+      </span>
+    </div>
+
+    <div className="sos-stat-card sos-stat-critical">
+      <span className="sos-stat-label">
+        Critical
+      </span>
+
+      <strong>{data.summary.critical}</strong>
+
+      <span className="sos-stat-description">
+        Critical priority emergencies
+      </span>
+    </div>
+
+    <div className="sos-stat-card sos-stat-resolved">
+      <span className="sos-stat-label">
+        Resolved
+      </span>
+
+      <strong>{data.summary.resolved}</strong>
+
+      <span className="sos-stat-description">
+        Successfully resolved
+      </span>
+    </div>
+  </section>
+
+  <section className="sos-toolbar">
+    <div className="sos-search">
+      <span>⌕</span>
+
+      <input
+        type="search"
+        placeholder="Search SOS, patient, blood group, city..."
+        value={search}
+        onChange={(event) =>
+          setSearch(event.target.value)
+        }
+      />
+    </div>
+
+    <div className="sos-filters">
+      {[
+        ["ALL", "All"],
+        ["ACTIVE", "Active"],
+        ["RESOLVED", "Resolved"],
+        ["CANCELLED", "Cancelled"],
+      ].map(([value, label]) => (
+        <button
+          key={value}
+          type="button"
+          className={
+            filter === value
+              ? "sos-filter active"
+              : "sos-filter"
+          }
+          onClick={() => setFilter(value)}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  </section>
+
+  <section className="sos-content">
+    <div className="sos-table-card">
+      <div className="sos-table-header">
+        <div>
+          <h2>Emergency requests</h2>
+
+          <p>
+            {filteredRecords.length} request
+            {filteredRecords.length === 1 ? "" : "s"}
+            {" "}shown
+          </p>
+        </div>
+      </div>
+
+      {filteredRecords.length === 0 ? (
+        <div className="sos-empty">
+          <div className="sos-empty-icon">
+            SOS
+          </div>
+
+          <h3>No emergency requests found</h3>
+
+          <p>
+            There are currently no SOS requests matching
+            your selected filter.
+          </p>
+        </div>
+      ) : (
+        <div className="sos-table-wrap">
+          <table className="sos-table">
+            <thead>
+              <tr>
+                <th>Emergency</th>
+                <th>Blood</th>
+                <th>Units</th>
+                <th>Urgency</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th />
+              </tr>
+            </thead>
+
+            <tbody>
+              {filteredRecords.map((record) => (
+                <tr key={record.id}>
+                  <td>
+                    <div className="sos-request-cell">
+                      <div className="sos-request-icon">
+                        SOS
+                      </div>
+
+                      <div>
+                        <strong>
+                          {record.users?.full_name ||
+                            "Unknown user"}
+                        </strong>
+
+                        <span>
+                          #{record.id.slice(0, 8)}
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div className="sos-blood-cell">
+                      <strong>
+                        {record.blood_groups?.code ||
+                          "—"}
+                      </strong>
+
+                      <span>
+                        {record.blood_groups?.name ||
+                          "Unknown"}
+                      </span>
+                    </div>
+                  </td>
+
+                  <td>
+                    <strong>
+                      {record.units_required}
+                    </strong>
+                  </td>
+
+                  <td>
+                    <span
+                      className={getUrgencyClass(
+                        record.urgency_level,
+                      )}
+                    >
+                      {urgencyLabel(
+                        record.urgency_level,
+                      )}
+                    </span>
+                  </td>
+
+                  <td>
+                    <span className="sos-location">
+                      {locationText(record)}
+                    </span>
+                  </td>
+
+                  <td>
+                    <span
+                      className={getStatusClass(
+                        record.status,
+                      )}
+                    >
+                      {statusLabel(record.status)}
+                    </span>
+                  </td>
+
+                  <td>
+                    <span className="sos-created">
+                      {formatDate(record.created_at)}
+                    </span>
+                  </td>
+
+                  <td>
+                    <button
+                      type="button"
+                      className="sos-view-button"
+                      onClick={() => {
+                        setActionError(null);
+                        setActionSuccess(null);
+                        setSelected(record);
+                      }}
+                    >
+                      View
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  </section>
+
+  {selected && (
+    <div
+      className="sos-modal-backdrop"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) {
+          setSelected(null);
+          setActionError(null);
+          setActionSuccess(null);
+        }
+      }}
+    >
+      <div className="sos-modal">
+        <div className="sos-modal-header">
+          <div>
+            <span className="sos-modal-kicker">
+              EMERGENCY SOS
+            </span>
+
+            <h2>
+              {selected.users?.full_name ||
+                "Unknown user"}
+            </h2>
+
+            <p>
+              Request #{selected.id}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            className="sos-close-button"
+            onClick={() => {
+              setSelected(null);
+              setActionError(null);
+              setActionSuccess(null);
+            }}
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="sos-modal-status-row">
+          <span
+            className={getStatusClass(
+              selected.status,
+            )}
+          >
+            {statusLabel(selected.status)}
+          </span>
+
+          <span
+            className={getUrgencyClass(
+              selected.urgency_level,
+            )}
+          >
+            {urgencyLabel(
+              selected.urgency_level,
+            )}
+          </span>
+        </div>
+
+        {actionError && (
+          <div className="sos-modal-action-error">
+            {actionError}
+          </div>
+        )}
+
+        <div className="sos-detail-grid">
+          <div>
+            <span>Blood group</span>
+
+            <strong>
+              {selected.blood_groups?.code || "—"}
+            </strong>
+          </div>
+
+          <div>
+            <span>Units required</span>
+
+            <strong>
+              {selected.units_required}
+            </strong>
+          </div>
+
+          <div>
+            <span>Location</span>
+
+            <strong>
+              {locationText(selected)}
+            </strong>
+          </div>
+
+          <div>
+            <span>Created</span>
+
+            <strong>
+              {formatDate(selected.created_at)}
+            </strong>
+          </div>
+
+          <div>
+            <span>Requester email</span>
+
+            <strong>
+              {selected.users?.email || "—"}
+            </strong>
+          </div>
+
+          <div>
+            <span>GPS accuracy</span>
+
+            <strong>
+              {selected.gps_accuracy != null
+                ? `${selected.gps_accuracy.toFixed(1)} m`
+                : "—"}
+            </strong>
+          </div>
+        </div>
+
+        {selected.description && (
+          <div className="sos-description">
+            <span>Description</span>
+
+            <p>{selected.description}</p>
+          </div>
+        )}
+
+        {selected.latitude != null &&
+          selected.longitude != null && (
+            <div className="sos-location-card">
+              <div>
+                <span>GPS coordinates</span>
+
+                <strong>
+                  {selected.latitude.toFixed(6)},{" "}
+                  {selected.longitude.toFixed(6)}
+                </strong>
+              </div>
+
+              <a
+                href={`https://www.google.com/maps?q=${selected.latitude},${selected.longitude}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open in Maps
+              </a>
+            </div>
+          )}
+
+        <div className="sos-action-panel">
+          <div>
+            <span className="sos-action-title">
+              Response
+            </span>
+
+            <p>
+              Update the emergency request status
+              according to your response.
+            </p>
+          </div>
+
+          <div className="sos-action-buttons">
+            {canActivate(selected.status) && (
+              <button
+                type="button"
+                className="sos-action-button sos-action-activate"
+                disabled={actionLoading !== null}
+                onClick={() =>
+                  updateSosStatus(
+                    selected,
+                    "ACTIVE",
+                  )
+                }
+              >
+                {actionLoading === "ACTIVE"
+                  ? "Activating..."
+                  : "Accept & Activate"}
+              </button>
+            )}
+
+            {canResolve(selected.status) && (
+              <button
+                type="button"
+                className="sos-action-button sos-action-resolve"
+                disabled={actionLoading !== null}
+                onClick={() =>
+                  updateSosStatus(
+                    selected,
+                    "RESOLVED",
+                  )
+                }
+              >
+                {actionLoading === "RESOLVED"
+                  ? "Resolving..."
+                  : "Mark Resolved"}
+              </button>
+            )}
+
+            {canCancel(selected.status) && (
+              <button
+                type="button"
+                className="sos-action-button sos-action-cancel"
+                disabled={actionLoading !== null}
+                onClick={() =>
+                  updateSosStatus(
+                    selected,
+                    "CANCELLED",
+                  )
+                }
+              >
+                {actionLoading === "CANCELLED"
+                  ? "Cancelling..."
+                  : "Cancel SOS"}
+              </button>
+            )}
+
+            {!canActivate(selected.status) &&
+              !canResolve(selected.status) &&
+              !canCancel(selected.status) && (
+                <span className="sos-action-complete">
+                  No further actions are available
+                  for this request.
+                </span>
+              )}
+          </div>
+        </div>
+
+        <div className="sos-modal-footer">
+          <button
+            type="button"
+            className="sos-secondary-button"
+            disabled={actionLoading !== null}
+            onClick={() => {
+              setSelected(null);
+              setActionError(null);
+              setActionSuccess(null);
+            }}
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  )}
+</main>
+
+
+);
+}

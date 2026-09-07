@@ -1,0 +1,1534 @@
+/* =========================================================
+   LIFELYNK AI — LOCATIONS
+   Production-ready page-specific styles
+   ========================================================= */
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.locations-page {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px 32px 44px;
+
+  color: var(--lifelynk-text);
+
+  box-sizing: border-box;
+}
+
+.locations-page *,
+.locations-page *::before,
+.locations-page *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.locations-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  min-height: 136px;
+  padding: 30px 32px;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--lifelynk-surface) 0%,
+      var(--lifelynk-surface-soft) 100%
+    );
+
+  box-shadow:
+    0 8px 30px rgba(15, 23, 42, 0.055);
+
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.locations-header__content {
+  min-width: 0;
+}
+
+.locations-header__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin: 0 0 9px;
+
+  color: var(--lifelynk-red);
+
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.locations-header__eyebrow svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+}
+
+.locations-header h2 {
+  margin: 0;
+
+  color: var(--lifelynk-navy);
+
+  font-size: clamp(27px, 3vw, 36px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.028em;
+}
+
+.locations-header__desc {
+  max-width: 720px;
+  margin: 9px 0 0;
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   SUMMARY STATS
+   ========================================================= */
+
+.locations-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+
+  margin-top: 20px;
+}
+
+.locations-stat {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  min-width: 0;
+  min-height: 98px;
+
+  padding: 18px 20px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 15px;
+
+  background: var(--lifelynk-surface);
+
+  box-shadow:
+    0 4px 18px rgba(15, 23, 42, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.locations-stat:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--lifelynk-border-dark);
+
+  box-shadow:
+    0 9px 25px rgba(15, 23, 42, 0.075);
+}
+
+.locations-stat__icon {
+  flex: 0 0 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 12px;
+
+  color: var(--lifelynk-text-secondary);
+}
+
+.locations-stat__icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.locations-stat:nth-child(1) .locations-stat__icon {
+  background: #fff1f1;
+  color: var(--lifelynk-red);
+}
+
+.locations-stat:nth-child(2) .locations-stat__icon {
+  background: #edf6ff;
+  color: var(--lifelynk-blue);
+}
+
+.locations-stat:nth-child(3) .locations-stat__icon {
+  background: var(--lifelynk-green-light);
+  color: var(--lifelynk-green);
+}
+
+.locations-stat:nth-child(4) .locations-stat__icon {
+  background: var(--lifelynk-orange-light);
+  color: var(--lifelynk-orange);
+}
+
+.locations-stat__content {
+  min-width: 0;
+}
+
+.locations-stat__label {
+  margin: 0 0 5px;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.locations-stat__value {
+  display: block;
+
+  color: var(--lifelynk-text);
+
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.locations-stat__badge {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+
+  padding: 4px 7px;
+
+  border: 1px solid rgba(15, 23, 42, 0.035);
+  border-radius: 999px;
+
+  background: var(--lifelynk-surface-soft);
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   MAP + EXPLORER SECTION
+   ========================================================= */
+
+.locations-map-section {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(0, 0.95fr);
+  gap: 16px;
+
+  margin-top: 20px;
+
+  align-items: stretch;
+}
+
+/* =========================================================
+   MAP CARD
+   ========================================================= */
+
+.locations-map {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 520px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 16px;
+
+  background: var(--lifelynk-surface);
+
+  box-shadow:
+    0 5px 22px rgba(15, 23, 42, 0.045);
+}
+
+.locations-map__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  min-height: 65px;
+  padding: 16px 20px;
+
+  border-bottom: 1px solid var(--lifelynk-border);
+
+  background: var(--lifelynk-surface);
+}
+
+.locations-map__header > div {
+  min-width: 0;
+}
+
+.locations-map__eyebrow {
+  margin: 0 0 4px;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.locations-map__title {
+  margin: 0;
+
+  color: var(--lifelynk-text);
+
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+/* =========================================================
+   MAP CANVAS
+   ========================================================= */
+
+.locations-map__canvas {
+  position: relative;
+
+  width: 100%;
+  height: 430px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(30, 136, 229, 0.045),
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      var(--lifelynk-surface-soft) 0%,
+      #f8fafc 100%
+    );
+}
+
+.locations-map__svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* =========================================================
+   MAP SVG ELEMENTS
+   ========================================================= */
+
+.locations-map__svg path {
+  transition:
+    fill 0.18s ease,
+    stroke 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.locations-map__svg circle {
+  transition:
+    r 0.18s ease,
+    fill 0.18s ease,
+    stroke 0.18s ease,
+    opacity 0.18s ease;
+}
+
+/* =========================================================
+   PROVINCES
+   ========================================================= */
+
+.locations-map__province-path {
+  fill: #eef3f7;
+  stroke: #ccd7e2;
+  stroke-width: 1;
+
+  cursor: pointer;
+
+  transition:
+    fill 0.18s ease,
+    stroke 0.18s ease,
+    stroke-width 0.18s ease;
+}
+
+.locations-map__province-path:hover {
+  fill: #e4ebf2;
+  stroke: #b8c7d6;
+}
+
+.locations-map__province-path--active {
+  fill: rgba(198, 40, 40, 0.09);
+  stroke: var(--lifelynk-red);
+  stroke-width: 1.6;
+}
+
+/* =========================================================
+   CITY MARKERS
+   ========================================================= */
+
+.locations-map__city-marker {
+  fill: var(--lifelynk-blue);
+  stroke: #ffffff;
+  stroke-width: 1.7;
+
+  cursor: pointer;
+
+  opacity: 0.9;
+
+  transition:
+    r 0.18s ease,
+    fill 0.18s ease,
+    stroke 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.locations-map__city-marker:hover {
+  fill: var(--lifelynk-navy);
+  opacity: 1;
+}
+
+.locations-map__city-marker--active {
+  fill: var(--lifelynk-red);
+  stroke: #ffffff;
+  stroke-width: 2.2;
+
+  opacity: 1;
+}
+
+/* =========================================================
+   MAP LABELS
+   ========================================================= */
+
+.locations-map__city-label {
+  fill: var(--lifelynk-text-secondary);
+
+  font-size: 9px;
+  font-weight: 600;
+
+  pointer-events: none;
+  text-anchor: middle;
+
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.85);
+  stroke-width: 2px;
+  stroke-linejoin: round;
+}
+
+/* =========================================================
+   GENERIC MAP TOOLTIP
+   ========================================================= */
+
+.locations-map__tooltip {
+  position: absolute;
+
+  padding: 8px 12px;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: var(--lifelynk-radius-sm);
+
+  background: var(--lifelynk-surface);
+
+  box-shadow:
+    0 8px 22px rgba(15, 23, 42, 0.12);
+
+  color: var(--lifelynk-text);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  pointer-events: none;
+  white-space: nowrap;
+
+  z-index: 5;
+}
+
+/* =========================================================
+   ORGANIZATION MARKERS
+   ========================================================= */
+
+.locations-map__organization {
+  cursor: pointer;
+}
+
+.locations-map__organization-marker {
+  stroke: #ffffff;
+  stroke-width: 1.5;
+
+  cursor: pointer;
+
+  transition:
+    r 0.18s ease,
+    fill 0.18s ease,
+    stroke 0.18s ease;
+}
+
+.locations-map__organization-marker:hover {
+  r: 7;
+}
+
+.locations-map__organization-marker--hospital {
+  fill: var(--lifelynk-green);
+}
+
+.locations-map__organization-marker--bloodbank {
+  fill: var(--lifelynk-orange);
+}
+
+.locations-map__organization-ring {
+  fill: none;
+
+  stroke: currentColor;
+  stroke-width: 1;
+
+  opacity: 0.3;
+
+  pointer-events: none;
+}
+
+.locations-map__organization-tooltip {
+  pointer-events: none;
+}
+
+.locations-map__organization-tooltip-bg {
+  fill: rgba(23, 32, 51, 0.96);
+
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 0.8;
+}
+
+.locations-map__organization-tooltip-title {
+  fill: #ffffff;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  text-anchor: middle;
+}
+
+.locations-map__organization-tooltip-type {
+  fill: rgba(255, 255, 255, 0.7);
+
+  font-size: 7px;
+  font-weight: 600;
+
+  text-anchor: middle;
+}
+
+/* =========================================================
+   MAP LEGEND
+   ========================================================= */
+
+.locations-map__legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+
+  min-height: 45px;
+  padding: 10px 20px;
+
+  border-top: 1px solid var(--lifelynk-border);
+
+  background: var(--lifelynk-surface-soft);
+}
+
+.locations-map__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.locations-map__legend-dot {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 7px;
+
+  border-radius: 50%;
+}
+
+.locations-map__legend-dot--province {
+  background: rgba(198, 40, 40, 0.2);
+  border: 1.5px solid var(--lifelynk-red);
+}
+
+.locations-map__legend-dot--city {
+  background: var(--lifelynk-blue);
+  border: 1.5px solid #ffffff;
+}
+
+.locations-map__legend-dot--hospital {
+  background: var(--lifelynk-green);
+  border: 1.5px solid #ffffff;
+}
+
+.locations-map__legend-dot--bloodbank {
+  background: var(--lifelynk-orange);
+  border: 1.5px solid #ffffff;
+}
+
+/* =========================================================
+   EXPLORER PANEL
+   ========================================================= */
+
+.locations-explorer {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 520px;
+  max-height: 540px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 16px;
+
+  background: var(--lifelynk-surface);
+
+  box-shadow:
+    0 5px 22px rgba(15, 23, 42, 0.045);
+}
+
+.locations-explorer__header {
+  flex: 0 0 auto;
+
+  min-height: 65px;
+  padding: 16px 20px;
+
+  border-bottom: 1px solid var(--lifelynk-border);
+
+  background: var(--lifelynk-surface);
+}
+
+.locations-explorer__eyebrow {
+  margin: 0 0 4px;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.locations-explorer__title {
+  margin: 0;
+
+  overflow: hidden;
+
+  color: var(--lifelynk-text);
+
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.3;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.locations-explorer__filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+
+  flex: 0 0 auto;
+
+  padding: 13px 20px;
+
+  border-bottom: 1px solid var(--lifelynk-border);
+
+  background: var(--lifelynk-surface-soft);
+}
+
+.locations-explorer__select-wrap {
+  min-width: 0;
+}
+
+.locations-explorer__select-label {
+  display: block;
+
+  margin: 0 0 5px;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 9px;
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.locations-explorer__select-wrap select {
+  display: block;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+
+  padding: 0 30px 0 10px;
+
+  border: 1px solid var(--lifelynk-border-dark);
+  border-radius: 7px;
+
+  outline: none;
+
+  background-color: var(--lifelynk-surface);
+
+  color: var(--lifelynk-text);
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.locations-explorer__select-wrap select:hover {
+  border-color: #b7c3d0;
+}
+
+.locations-explorer__select-wrap select:focus {
+  border-color: var(--lifelynk-blue);
+
+  box-shadow:
+    0 0 0 3px rgba(30, 136, 229, 0.1);
+}
+
+.locations-explorer__select-wrap select:disabled {
+  background: #f5f7fa;
+
+  color: var(--lifelynk-text-muted);
+
+  cursor: not-allowed;
+
+  opacity: 0.8;
+}
+
+/* =========================================================
+   ORGANIZATION LIST
+   ========================================================= */
+
+.locations-explorer__list {
+  flex: 1 1 auto;
+
+  min-height: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 12px 20px 16px;
+
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d6dee8 transparent;
+}
+
+.locations-explorer__list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.locations-explorer__list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.locations-explorer__list::-webkit-scrollbar-thumb {
+  background: #d6dee8;
+  border-radius: 999px;
+}
+
+.locations-explorer__list::-webkit-scrollbar-thumb:hover {
+  background: #bdc9d6;
+}
+
+/* =========================================================
+   ORGANIZATION CARD
+   ========================================================= */
+
+.locations-org-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+
+  width: 100%;
+
+  padding: 13px;
+
+  margin: 0 0 9px;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 11px;
+
+  background: var(--lifelynk-surface);
+
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.locations-org-card:last-child {
+  margin-bottom: 0;
+}
+
+.locations-org-card:hover {
+  transform: translateY(-1px);
+
+  border-color: var(--lifelynk-border-dark);
+
+  background: #fcfdff;
+
+  box-shadow:
+    0 5px 16px rgba(15, 23, 42, 0.065);
+}
+
+/* =========================================================
+   ORGANIZATION ICON
+   ========================================================= */
+
+.locations-org-card__icon {
+  flex: 0 0 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 9px;
+}
+
+.locations-org-card__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.locations-org-card__icon--hospital {
+  background: var(--lifelynk-green-light);
+  color: var(--lifelynk-green);
+}
+
+.locations-org-card__icon--bloodbank {
+  background: var(--lifelynk-orange-light);
+  color: var(--lifelynk-orange);
+}
+
+/* =========================================================
+   ORGANIZATION BODY
+   ========================================================= */
+
+.locations-org-card__body {
+  flex: 1 1 auto;
+
+  min-width: 0;
+}
+
+.locations-org-card__name {
+  margin: 0 0 4px;
+
+  overflow: hidden;
+
+  color: var(--lifelynk-text);
+
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.35;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.locations-org-card__type {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 3px 7px;
+  margin: 0 0 7px;
+
+  border-radius: 999px;
+
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.locations-org-card__type--hospital {
+  background: var(--lifelynk-green-light);
+  color: var(--lifelynk-green);
+}
+
+.locations-org-card__type--bloodbank {
+  background: var(--lifelynk-orange-light);
+  color: var(--lifelynk-orange);
+}
+
+/* =========================================================
+   ORGANIZATION DETAILS
+   ========================================================= */
+
+.locations-org-card__details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  min-width: 0;
+}
+
+.locations-org-card__detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+
+  min-width: 0;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.locations-org-card__detail svg {
+  width: 12px;
+  height: 12px;
+
+  flex: 0 0 12px;
+
+  margin-top: 1px;
+
+  color: var(--lifelynk-text-muted);
+
+  opacity: 0.7;
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.locations-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 240px;
+
+  padding: 32px 20px;
+
+  text-align: center;
+}
+
+.locations-empty__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 50px;
+  height: 50px;
+
+  margin-bottom: 13px;
+
+  border-radius: 13px;
+
+  background: var(--lifelynk-surface-soft);
+
+  color: var(--lifelynk-text-muted);
+}
+
+.locations-empty__icon svg {
+  width: 23px;
+  height: 23px;
+}
+
+.locations-empty__title {
+  margin: 0 0 6px;
+
+  color: var(--lifelynk-text);
+
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.locations-empty__desc {
+  max-width: 280px;
+
+  margin: 0;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.locations-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 300px;
+
+  padding: 40px 24px;
+
+  border: 1px solid #fecaca;
+  border-radius: var(--lifelynk-radius-lg);
+
+  background: #fef2f2;
+
+  text-align: center;
+}
+
+.locations-error__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 56px;
+  height: 56px;
+
+  margin-bottom: 16px;
+
+  border-radius: 14px;
+
+  background: rgba(198, 40, 40, 0.1);
+
+  color: var(--lifelynk-red);
+}
+
+.locations-error__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.locations-error__title {
+  margin: 0 0 6px;
+
+  color: #991b1b;
+
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.locations-error__desc {
+  max-width: 320px;
+
+  margin: 0;
+
+  color: #b91c1c;
+
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   PRIMARY BUTTON COMPATIBILITY
+   ========================================================= */
+
+.locations-page .lifelynk-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  border: 0;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    opacity 0.16s ease;
+}
+
+.locations-page .lifelynk-button:hover {
+  transform: translateY(-1px);
+}
+
+.locations-page .lifelynk-button:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   ANIMATION — STAGGER FADE-IN
+   ========================================================= */
+
+.locations-fade-in {
+  animation:
+    locations-fade-up 0.42s ease-out both;
+}
+
+.locations-fade-in--1 {
+  animation-delay: 0s;
+}
+
+.locations-fade-in--2 {
+  animation-delay: 0.055s;
+}
+
+.locations-fade-in--3 {
+  animation-delay: 0.11s;
+}
+
+.locations-fade-in--4 {
+  animation-delay: 0.165s;
+}
+
+.locations-fade-in--5 {
+  animation-delay: 0.22s;
+}
+
+@keyframes locations-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1400px) {
+  .locations-page {
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+
+  .locations-map-section {
+    grid-template-columns:
+      minmax(0, 1.08fr)
+      minmax(0, 0.92fr);
+  }
+
+  .locations-map__canvas {
+    height: 450px;
+  }
+
+  .locations-map {
+    min-height: 540px;
+  }
+
+  .locations-explorer {
+    min-height: 540px;
+    max-height: 560px;
+  }
+}
+
+/* =========================================================
+   LARGE TABLETS / SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .locations-page {
+    padding: 25px 24px 40px;
+  }
+
+  .locations-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .locations-map-section {
+    grid-template-columns: 1fr;
+  }
+
+  .locations-map {
+    min-height: 500px;
+  }
+
+  .locations-map__canvas {
+    height: 410px;
+  }
+
+  .locations-explorer {
+    min-height: 480px;
+    max-height: 540px;
+  }
+}
+
+/* =========================================================
+   TABLETS
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .locations-page {
+    padding: 20px 16px 34px;
+  }
+
+  .locations-header {
+    align-items: flex-start;
+
+    min-height: auto;
+
+    padding: 24px 22px;
+  }
+
+  .locations-header h2 {
+    font-size: 27px;
+  }
+
+  .locations-header__desc {
+    max-width: 100%;
+
+    font-size: 13px;
+  }
+
+  .locations-stats {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .locations-stat {
+    min-height: 88px;
+
+    padding: 17px 18px;
+  }
+
+  .locations-stat__icon {
+    flex-basis: 44px;
+
+    width: 44px;
+    height: 44px;
+  }
+
+  .locations-stat__value {
+    font-size: 22px;
+  }
+
+  .locations-map-section {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .locations-map {
+    min-height: 430px;
+  }
+
+  .locations-map__canvas {
+    height: 340px;
+  }
+
+  .locations-explorer {
+    min-height: 460px;
+    max-height: 520px;
+  }
+
+  .locations-explorer__filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .locations-page {
+    padding: 16px 12px 30px;
+  }
+
+  .locations-header {
+    padding: 20px 18px;
+
+    border-radius: 14px;
+  }
+
+  .locations-header__eyebrow {
+    font-size: 9px;
+  }
+
+  .locations-header h2 {
+    font-size: 23px;
+  }
+
+  .locations-header__desc {
+    margin-top: 8px;
+
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .locations-stats {
+    margin-top: 14px;
+  }
+
+  .locations-stat {
+    min-height: 84px;
+
+    padding: 15px;
+  }
+
+  .locations-stat__icon {
+    flex-basis: 42px;
+
+    width: 42px;
+    height: 42px;
+  }
+
+  .locations-stat__icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .locations-stat__label {
+    font-size: 10px;
+  }
+
+  .locations-stat__value {
+    font-size: 21px;
+  }
+
+  .locations-stat__badge {
+    top: 10px;
+    right: 10px;
+
+    font-size: 7px;
+  }
+
+  .locations-map-section {
+    margin-top: 14px;
+  }
+
+  .locations-map {
+    min-height: 390px;
+
+    border-radius: 14px;
+  }
+
+  .locations-map__header,
+  .locations-explorer__header {
+    min-height: 58px;
+
+    padding: 14px 16px;
+  }
+
+  .locations-map__eyebrow,
+  .locations-explorer__eyebrow {
+    font-size: 8px;
+  }
+
+  .locations-map__title,
+  .locations-explorer__title {
+    font-size: 14px;
+  }
+
+  .locations-map__canvas {
+    height: 300px;
+  }
+
+  .locations-map__legend {
+    gap: 9px;
+
+    min-height: 42px;
+
+    padding: 9px 14px;
+  }
+
+  .locations-map__legend-item {
+    font-size: 9px;
+  }
+
+  .locations-explorer {
+    min-height: 430px;
+    max-height: 500px;
+
+    border-radius: 14px;
+  }
+
+  .locations-explorer__filters {
+    grid-template-columns: 1fr;
+
+    gap: 9px;
+
+    padding: 12px 16px;
+  }
+
+  .locations-explorer__select-wrap select {
+    min-height: 37px;
+
+    font-size: 11px;
+  }
+
+  .locations-explorer__list {
+    padding: 10px 16px 14px;
+  }
+
+  .locations-org-card {
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+  }
+
+  .locations-org-card__icon {
+    flex-basis: 34px;
+
+    width: 34px;
+    height: 34px;
+  }
+
+  .locations-org-card__icon svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .locations-org-card__name {
+    font-size: 11px;
+  }
+
+  .locations-org-card__detail {
+    font-size: 9px;
+  }
+
+  .locations-org-card__detail svg {
+    width: 11px;
+    height: 11px;
+
+    flex-basis: 11px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .locations-page {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .locations-header {
+    padding: 18px 15px;
+  }
+
+  .locations-header h2 {
+    font-size: 21px;
+  }
+
+  .locations-stat {
+    padding: 14px;
+  }
+
+  .locations-map__canvas {
+    height: 270px;
+  }
+
+  .locations-map__legend {
+    gap: 7px;
+  }
+
+  .locations-map__legend-item {
+    font-size: 8px;
+  }
+
+  .locations-org-card__details {
+    gap: 2px;
+  }
+
+  .locations-org-card__detail {
+    font-size: 8.5px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .locations-fade-in {
+    animation: none;
+  }
+
+  .locations-stat,
+  .locations-org-card,
+  .locations-map__svg path,
+  .locations-map__svg circle,
+  .locations-map__province-path,
+  .locations-map__city-marker,
+  .locations-map__organization-marker,
+  .locations-page .lifelynk-button {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   DARK MODE SAFETY
+   If the global theme supports dark mode through variables,
+   these rules preserve readability of fixed SVG colors.
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+  .locations-map__city-label {
+    stroke: rgba(255, 255, 255, 0.75);
+  }
+}

@@ -1,0 +1,1005 @@
+/* =========================================================
+   LIFELYNK AI — GOVERNMENT DASHBOARD
+   Page-specific styles
+   Theme-aware: Light + Dark
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.government-page {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 34px 38px 64px;
+  color: var(--lifelynk-text);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.gov-header,
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.gov-header {
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.gov-header h1 {
+  margin: 6px 0 7px;
+  color: var(--lifelynk-navy);
+  font-size: 31px;
+  letter-spacing: -0.8px;
+}
+
+.gov-header p {
+  margin: 0;
+  color: var(--lifelynk-text-secondary);
+  line-height: 1.55;
+}
+
+.eyebrow {
+  display: block;
+  color: var(--lifelynk-red);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.gov-user {
+  padding: 12px 15px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 11px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text);
+  box-shadow: var(--lifelynk-shadow-sm);
+}
+
+.gov-user b,
+.gov-user small {
+  display: block;
+}
+
+.gov-user small {
+  margin-top: 4px;
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   KPI CARDS
+   ========================================================= */
+
+.gov-kpis {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 13px;
+  margin-bottom: 17px;
+}
+
+.gov-kpi {
+  padding: 16px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 13px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text);
+  box-shadow: var(--lifelynk-shadow-sm);
+}
+
+.gov-kpi small,
+.gov-kpi b,
+.gov-kpi em {
+  display: block;
+}
+
+.gov-kpi small {
+  color: var(--lifelynk-text-secondary);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.gov-kpi b {
+  margin-top: 9px;
+  color: var(--lifelynk-text);
+  font-size: 25px;
+}
+
+.gov-kpi em {
+  margin-top: 4px;
+  color: var(--lifelynk-text-muted);
+  font-size: 10px;
+  font-style: normal;
+}
+
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.gov-panel {
+  margin-bottom: 17px;
+  padding: 21px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 14px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text);
+  box-shadow: var(--lifelynk-shadow-sm);
+}
+
+.section-head {
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.section-head h2 {
+  margin: 5px 0 0;
+  color: var(--lifelynk-navy);
+  font-size: 18px;
+}
+
+.section-head > span {
+  color: var(--lifelynk-text-muted);
+  font-size: 10px;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 17px;
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.alerts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.alert {
+  padding: 13px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 10px;
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text);
+}
+
+.alert.critical {
+  background: var(--lifelynk-danger-bg, rgba(198, 40, 40, 0.08));
+  border-color: var(--lifelynk-error-border, rgba(198, 40, 40, 0.22));
+}
+
+.alert.warning {
+  background: var(--lifelynk-warning-bg, rgba(245, 158, 11, 0.08));
+  border-color: var(--lifelynk-warning-border, rgba(245, 158, 11, 0.22));
+}
+
+.alert b {
+  color: var(--lifelynk-text);
+  font-size: 11px;
+}
+
+.alert p {
+  margin: 5px 0 0;
+  color: var(--lifelynk-text-secondary);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   BLOOD OVERVIEW
+   ========================================================= */
+
+.blood-total,
+.donor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-bottom: 15px;
+}
+
+.blood-total div,
+.donor div {
+  padding: 12px;
+  border-radius: 9px;
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-secondary);
+  font-size: 10px;
+}
+
+.blood-total b,
+.donor b {
+  display: block;
+  margin-top: 4px;
+  color: var(--lifelynk-text);
+  font-size: 20px;
+}
+
+.blood-row {
+  display: grid;
+  grid-template-columns: 45px 1fr 90px;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.blood-row > b {
+  color: var(--lifelynk-red);
+  font-size: 12px;
+}
+
+.blood-row > span {
+  color: var(--lifelynk-text-secondary);
+  font-size: 10px;
+  text-align: right;
+}
+
+.bar {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--lifelynk-border);
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--lifelynk-red);
+}
+
+
+/* =========================================================
+   MINI KPI
+   ========================================================= */
+
+.mini {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.mini .gov-kpi {
+  padding: 11px;
+  background: var(--lifelynk-surface-soft);
+  box-shadow: none;
+}
+
+.mini .gov-kpi b {
+  font-size: 19px;
+}
+
+
+/* =========================================================
+   RISK GRID
+   ========================================================= */
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.risk-grid .gov-kpi {
+  padding: 11px;
+  background: var(--lifelynk-surface-soft);
+  box-shadow: none;
+}
+
+.risk-grid .gov-kpi b {
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   SIMPLE DATA LINES
+   ========================================================= */
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--lifelynk-border);
+  color: var(--lifelynk-text);
+  font-size: 10px;
+}
+
+.line span {
+  color: var(--lifelynk-text-muted);
+}
+
+.line b {
+  color: var(--lifelynk-text-secondary);
+  text-align: right;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrap table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+}
+
+.table-wrap thead {
+  display: table-header-group;
+}
+
+.table-wrap tbody {
+  display: table-row-group;
+}
+
+.table-wrap tr {
+  display: table-row;
+}
+
+.table-wrap th,
+.table-wrap td {
+  display: table-cell;
+}
+
+.table-wrap th {
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--lifelynk-border);
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.table-wrap td {
+  padding: 12px 11px;
+  border-bottom: 1px solid var(--lifelynk-border);
+  color: var(--lifelynk-text-secondary);
+  font-size: 11px;
+  vertical-align: middle;
+}
+
+.table-wrap tbody tr {
+  transition: background-color 150ms ease;
+}
+
+.table-wrap tbody tr:hover {
+  background: var(--lifelynk-surface-soft);
+}
+
+td b,
+td small {
+  display: block;
+}
+
+td b {
+  color: var(--lifelynk-text);
+  font-size: 11px;
+}
+
+td small {
+  margin-top: 3px;
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.filters {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.filters input,
+.filters select,
+.section-head select {
+  height: 35px;
+  padding: 0 9px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 7px;
+  outline: none;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text-secondary);
+  font-family: inherit;
+  font-size: 10px;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.filters input {
+  width: 235px;
+}
+
+.filters input::placeholder {
+  color: var(--lifelynk-text-muted);
+}
+
+.filters input:hover,
+.filters select:hover,
+.section-head select:hover {
+  border-color: var(--lifelynk-border-dark);
+}
+
+.filters input:focus,
+.filters select:focus,
+.section-head select:focus {
+  border-color: var(--lifelynk-blue);
+  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.government-page button {
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 7px;
+  padding: 7px 10px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text-secondary);
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.government-page button:hover {
+  border-color: var(--lifelynk-border-dark);
+  background: var(--lifelynk-surface-soft);
+}
+
+.government-page button:active {
+  transform: translateY(1px);
+}
+
+.government-page button:focus-visible {
+  outline: 3px solid rgba(30, 136, 229, 0.18);
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   SUMMARY CHIPS
+   ========================================================= */
+
+.chips {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin: -3px 0 13px;
+}
+
+.chips span {
+  padding: 5px 8px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 6px;
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   STATUS BADGES
+   ========================================================= */
+
+.gov-status {
+  display: inline-block;
+  padding: 4px 7px;
+  border-radius: 15px;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.gov-status.pending {
+  background: var(--lifelynk-warning-bg, rgba(245, 158, 11, 0.1));
+  color: var(--lifelynk-warning, #8a651f);
+}
+
+.gov-status.verified {
+  background: var(--lifelynk-success-bg, rgba(18, 183, 106, 0.1));
+  color: var(--lifelynk-success, #287048);
+}
+
+.gov-status.rejected,
+.gov-status.cancelled {
+  background: var(--lifelynk-danger-bg, rgba(198, 40, 40, 0.1));
+  color: var(--lifelynk-danger, #a32929);
+}
+
+.gov-status.active {
+  background: var(--lifelynk-warning-bg, rgba(245, 158, 11, 0.1));
+  color: var(--lifelynk-warning, #8a651f);
+}
+
+.gov-status.resolved {
+  background: var(--lifelynk-success-bg, rgba(18, 183, 106, 0.1));
+  color: var(--lifelynk-success, #287048);
+}
+
+
+/* =========================================================
+   UTILITY
+   ========================================================= */
+
+.danger {
+  color: var(--lifelynk-red) !important;
+  font-weight: 800;
+}
+
+.empty {
+  padding: 35px;
+  color: var(--lifelynk-text-muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+
+/* =========================================================
+   HISTORY
+   ========================================================= */
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+}
+
+.history-card {
+  padding: 13px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 9px;
+  background: var(--lifelynk-surface-soft);
+}
+
+.history-card small,
+.history-card b,
+.history-card span {
+  display: block;
+}
+
+.history-card small {
+  color: var(--lifelynk-text-secondary);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.history-card b {
+  margin-top: 7px;
+  color: var(--lifelynk-text);
+  font-size: 20px;
+}
+
+.history-card span {
+  margin-top: 5px;
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(13, 25, 39, 0.53);
+}
+
+.modal {
+  width: min(820px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 15px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text);
+  box-shadow: var(--lifelynk-shadow-lg, 0 25px 70px rgba(8, 20, 34, 0.25));
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 21px;
+  border-bottom: 1px solid var(--lifelynk-border);
+}
+
+.modal-head h2 {
+  margin: 5px 0 0;
+  color: var(--lifelynk-navy);
+  font-size: 20px;
+}
+
+.close {
+  border: 0 !important;
+  background: var(--lifelynk-surface-soft) !important;
+  color: var(--lifelynk-text-secondary) !important;
+  font-size: 19px !important;
+}
+
+.close:hover {
+  background: var(--lifelynk-border) !important;
+  color: var(--lifelynk-text) !important;
+}
+
+
+/* =========================================================
+   DETAILS
+   ========================================================= */
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 20px;
+}
+
+.details > div {
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--lifelynk-border);
+}
+
+.details small,
+.details b {
+  display: block;
+}
+
+.details small {
+  color: var(--lifelynk-text-muted);
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.details b {
+  margin-top: 4px;
+  color: var(--lifelynk-text-secondary);
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   DECISION
+   ========================================================= */
+
+.decision,
+.existing {
+  margin: 0 20px 18px;
+  padding: 15px;
+  border-radius: 10px;
+  background: var(--lifelynk-surface-soft);
+}
+
+.decision label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--lifelynk-text-secondary);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.decision > div {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 13px;
+}
+
+.decision .chosen {
+  border-color: var(--lifelynk-success, #287048);
+  background: var(--lifelynk-success-bg, rgba(18, 183, 106, 0.1));
+  color: var(--lifelynk-success, #287048);
+}
+
+.decision .reject.chosen {
+  border-color: var(--lifelynk-red);
+  background: var(--lifelynk-danger-bg, rgba(198, 40, 40, 0.1));
+  color: var(--lifelynk-red);
+}
+
+.decision textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  padding: 9px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 7px;
+  outline: none;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text);
+  font: inherit;
+  font-size: 10px;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.decision textarea::placeholder {
+  color: var(--lifelynk-text-muted);
+}
+
+.decision textarea:focus {
+  border-color: var(--lifelynk-blue);
+  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+}
+
+.error {
+  color: var(--lifelynk-danger, #b52828);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.existing small {
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.existing p {
+  color: var(--lifelynk-text-secondary);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   MODAL ACTIONS
+   ========================================================= */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7px;
+  padding: 15px 20px;
+  border-top: 1px solid var(--lifelynk-border);
+}
+
+.modal-actions .primary {
+  border-color: var(--lifelynk-red);
+  background: var(--lifelynk-red);
+  color: #ffffff;
+}
+
+.modal-actions .primary:hover {
+  border-color: var(--lifelynk-red);
+  background: var(--lifelynk-red);
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   WRAPPERS
+   ========================================================= */
+
+.wrap {
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1250px
+   ========================================================= */
+
+@media (max-width: 1250px) {
+  .gov-kpis {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .alerts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .history-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 900px
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .government-page {
+    padding: 25px 18px 45px;
+  }
+
+  .gov-header {
+    flex-direction: column;
+  }
+
+  .two {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    width: 100%;
+  }
+
+  .filters input {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 600px
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .gov-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .alerts {
+    grid-template-columns: 1fr;
+  }
+
+  .mini {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .risk-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .history-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+  }
+
+  .gov-header h1 {
+    font-size: 26px;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  .filters select,
+  .filters input {
+    width: 100%;
+  }
+
+  .blood-row {
+    grid-template-columns: 40px 1fr 65px;
+  }
+
+  .gov-user {
+    width: 100%;
+  }
+
+  .gov-panel {
+    padding: 16px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .government-page button,
+  .filters input,
+  .filters select,
+  .section-head select,
+  .table-wrap tbody tr,
+  .decision textarea {
+    transition: none;
+  }
+}
+
+
+/* =========================================================
+   DARK THEME REFINEMENTS
+   ========================================================= */
+
+:root[data-theme="dark"] .government-page {
+  color: var(--lifelynk-text);
+}
+
+:root[data-theme="dark"] .gov-user,
+:root[data-theme="dark"] .gov-kpi,
+:root[data-theme="dark"] .gov-panel,
+:root[data-theme="dark"] .modal {
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .alert.critical {
+  background: rgba(198, 40, 40, 0.12);
+  border-color: rgba(239, 68, 68, 0.24);
+}
+
+:root[data-theme="dark"] .alert.warning {
+  background: rgba(245, 158, 11, 0.10);
+  border-color: rgba(245, 158, 11, 0.24);
+}
+
+:root[data-theme="dark"] .gov-status.pending {
+  background: rgba(245, 158, 11, 0.14);
+  color: #f5c36b;
+}
+
+:root[data-theme="dark"] .gov-status.verified,
+:root[data-theme="dark"] .gov-status.resolved {
+  background: rgba(18, 183, 106, 0.14);
+  color: #67d39a;
+}
+
+:root[data-theme="dark"] .gov-status.rejected,
+:root[data-theme="dark"] .gov-status.cancelled {
+  background: rgba(198, 40, 40, 0.14);
+  color: #f28b8b;
+}
+
+:root[data-theme="dark"] .decision .chosen {
+  background: rgba(18, 183, 106, 0.14);
+  color: #67d39a;
+}
+
+:root[data-theme="dark"] .decision .reject.chosen {
+  background: rgba(198, 40, 40, 0.14);
+  color: #f28b8b;
+}
+
+:root[data-theme="dark"] .backdrop {
+  background: rgba(0, 0, 0, 0.68);
+}

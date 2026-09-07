@@ -1,0 +1,479 @@
+﻿"use client";
+
+import { useState } from "react";
+
+import { createClient } from "@/lib/supabase/client";
+
+import "./settings.css";
+
+type SettingToggle = {
+  notifications: boolean;
+  location: boolean;
+};
+
+export default function SettingsPage() {
+  const supabase = createClient();
+
+  const [toggles, setToggles] = useState<SettingToggle>({
+    notifications: true,
+    location: true,
+  });
+
+  const [showPasswordForm, setShowPasswordForm] =
+    useState(false);
+
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] =
+    useState("");
+
+  const [passwordLoading, setPasswordLoading] =
+    useState(false);
+
+  const [passwordMessage, setPasswordMessage] =
+    useState<string | null>(null);
+
+  const [passwordError, setPasswordError] =
+    useState<string | null>(null);
+
+  const [showAbout, setShowAbout] = useState(false);
+
+  function toggleSetting(key: keyof SettingToggle) {
+    setToggles((current) => ({
+      ...current,
+      [key]: !current[key],
+    }));
+  }
+
+  function openPasswordForm() {
+    setPasswordMessage(null);
+    setPasswordError(null);
+    setNewPassword("");
+    setConfirmPassword("");
+    setShowPasswordForm(true);
+  }
+
+  function closePasswordForm() {
+    if (passwordLoading) return;
+
+    setShowPasswordForm(false);
+    setPasswordMessage(null);
+    setPasswordError(null);
+    setNewPassword("");
+    setConfirmPassword("");
+  }
+
+  async function handlePasswordUpdate() {
+    setPasswordMessage(null);
+    setPasswordError(null);
+
+    if (!newPassword || !confirmPassword) {
+      setPasswordError(
+        "Please enter and confirm your new password.",
+      );
+      return;
+    }
+
+    if (newPassword.length < 6) {
+      setPasswordError(
+        "Password must be at least 6 characters long.",
+      );
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      setPasswordError(
+        "New password and confirmation do not match.",
+      );
+      return;
+    }
+
+    setPasswordLoading(true);
+
+    const { error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+
+    setPasswordLoading(false);
+
+    if (error) {
+      setPasswordError(error.message);
+      return;
+    }
+
+    setPasswordMessage(
+      "Your password has been updated successfully.",
+    );
+
+    setNewPassword("");
+    setConfirmPassword("");
+
+    window.setTimeout(() => {
+      setShowPasswordForm(false);
+      setPasswordMessage(null);
+    }, 2500);
+  }
+
+  return (
+    <section className="settings-page">
+      <div className="settings-page__header">
+        <div>
+          <p className="settings-page__eyebrow">
+            ACCOUNT & SYSTEM
+          </p>
+
+          <h2>Settings</h2>
+
+          <p className="settings-page__description">
+            Manage your LifeLynk AI dashboard preferences,
+            security, and system settings.
+          </p>
+        </div>
+      </div>
+
+      <div className="settings-page__content">
+        {/* Preferences */}
+        <section className="settings-card">
+          <div className="settings-card__header">
+            <div className="settings-card__icon">
+              âš™
+            </div>
+
+            <div>
+              <h3>Preferences</h3>
+
+              <p>
+                Control how LifeLynk AI behaves for your
+                account.
+              </p>
+            </div>
+          </div>
+
+          <div className="settings-list">
+            {/* Notifications */}
+            <div className="settings-row">
+              <div className="settings-row__icon">
+                ðŸ””
+              </div>
+
+              <div className="settings-row__content">
+                <strong>Notifications</strong>
+
+                <span>
+                  Receive alerts and important healthcare
+                  network notifications.
+                </span>
+              </div>
+
+              <button
+                type="button"
+                className={`settings-toggle ${
+                  toggles.notifications
+                    ? "settings-toggle--active"
+                    : ""
+                }`}
+                aria-pressed={toggles.notifications}
+                onClick={() =>
+                  toggleSetting("notifications")
+                }
+              >
+                <span className="settings-toggle__track">
+                  <span className="settings-toggle__thumb" />
+                </span>
+
+                <span className="settings-toggle__label">
+                  {toggles.notifications
+                    ? "On"
+                    : "Off"}
+                </span>
+              </button>
+            </div>
+
+            {/* Appearance */}
+            <div className="settings-row">
+              <div className="settings-row__icon">
+                â—
+              </div>
+
+              <div className="settings-row__content">
+                <strong>Appearance</strong>
+
+                <span>
+                  LifeLynk AI dashboard currently uses the
+                  standard light interface.
+                </span>
+              </div>
+
+              <span className="settings-value">
+                Light
+              </span>
+            </div>
+
+            {/* Location */}
+            <div className="settings-row">
+              <div className="settings-row__icon">
+                âŒ–
+              </div>
+
+              <div className="settings-row__content">
+                <strong>Location Services</strong>
+
+                <span>
+                  Allow the dashboard to use location-aware
+                  healthcare network features.
+                </span>
+              </div>
+
+              <button
+                type="button"
+                className={`settings-toggle ${
+                  toggles.location
+                    ? "settings-toggle--active"
+                    : ""
+                }`}
+                aria-pressed={toggles.location}
+                onClick={() =>
+                  toggleSetting("location")
+                }
+              >
+                <span className="settings-toggle__track">
+                  <span className="settings-toggle__thumb" />
+                </span>
+
+                <span className="settings-toggle__label">
+                  {toggles.location
+                    ? "On"
+                    : "Off"}
+                </span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Security */}
+        <section className="settings-card">
+          <div className="settings-card__header">
+            <div className="settings-card__icon">
+              ðŸ”’
+            </div>
+
+            <div>
+              <h3>Security</h3>
+
+              <p>
+                Manage your account security and password.
+              </p>
+            </div>
+          </div>
+
+          <div className="settings-list">
+            <div className="settings-row settings-row--action">
+              <div className="settings-row__icon">
+                ðŸ”‘
+              </div>
+
+              <div className="settings-row__content">
+                <strong>Password & Security</strong>
+
+                <span>
+                  Keep your LifeLynk AI account secure by
+                  managing your password.
+                </span>
+              </div>
+
+              {!showPasswordForm && (
+                <button
+                  type="button"
+                  className="settings-action"
+                  onClick={openPasswordForm}
+                >
+                  Manage
+                  <span>â†’</span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          {showPasswordForm && (
+            <div className="settings-password">
+              <div className="settings-password__header">
+                <div>
+                  <h4>Change Password</h4>
+
+                  <p>
+                    Enter a new password for your LifeLynk AI
+                    account.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  className="settings-password__close"
+                  onClick={closePasswordForm}
+                  disabled={passwordLoading}
+                  aria-label="Close password form"
+                >
+                  Ã—
+                </button>
+              </div>
+
+              <div className="settings-password__fields">
+                <label>
+                  <span>New Password</span>
+
+                  <input
+                    type="password"
+                    value={newPassword}
+                    onChange={(event) =>
+                      setNewPassword(event.target.value)
+                    }
+                    placeholder="Enter new password"
+                    autoComplete="new-password"
+                    disabled={passwordLoading}
+                  />
+                </label>
+
+                <label>
+                  <span>Confirm New Password</span>
+
+                  <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(event) =>
+                      setConfirmPassword(event.target.value)
+                    }
+                    placeholder="Confirm new password"
+                    autoComplete="new-password"
+                    disabled={passwordLoading}
+                  />
+                </label>
+              </div>
+
+              {passwordError && (
+                <div className="settings-password__error">
+                  {passwordError}
+                </div>
+              )}
+
+              {passwordMessage && (
+                <div className="settings-password__success">
+                  {passwordMessage}
+                </div>
+              )}
+
+              <div className="settings-password__actions">
+                <button
+                  type="button"
+                  className="settings-action"
+                  onClick={closePasswordForm}
+                  disabled={passwordLoading}
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="button"
+                  className="settings-action settings-action--primary"
+                  onClick={handlePasswordUpdate}
+                  disabled={passwordLoading}
+                >
+                  {passwordLoading
+                    ? "Updating..."
+                    : "Update Password"}
+                </button>
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* About */}
+        <section className="settings-card">
+          <div className="settings-card__header">
+            <div className="settings-card__icon">
+              â„¹
+            </div>
+
+            <div>
+              <h3>About</h3>
+
+              <p>
+                Information about the LifeLynk AI platform.
+              </p>
+            </div>
+          </div>
+
+          <div className="settings-list">
+            <div className="settings-row">
+              <div className="settings-row__icon">
+                â™¥
+              </div>
+
+              <div className="settings-row__content">
+                <strong>About LifeLynk AI</strong>
+
+                <span>
+                  Pakistan's digital blood infrastructure
+                  for availability and emergency response.
+                </span>
+              </div>
+
+              <button
+                type="button"
+                className="settings-action"
+                onClick={() =>
+                  setShowAbout((current) => !current)
+                }
+              >
+                {showAbout ? "Close" : "View"}
+
+                <span>
+                  {showAbout ? "â†‘" : "â†’"}
+                </span>
+              </button>
+            </div>
+
+            {showAbout && (
+              <div className="settings-about">
+                <div className="settings-about__logo">
+                  <img
+                    src="/images/app_icon.png"
+                    alt="LifeLynk AI"
+                  />
+                </div>
+
+                <div>
+                  <h4>LifeLynk AI</h4>
+
+                  <p>
+                    LifeLynk AI connects hospitals, blood
+                    banks, donors, patients, and healthcare
+                    authorities through a unified digital
+                    healthcare network.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="settings-row">
+              <div className="settings-row__icon">
+                #
+              </div>
+
+              <div className="settings-row__content">
+                <strong>App Version</strong>
+
+                <span>
+                  Current LifeLynk AI web dashboard version.
+                </span>
+              </div>
+
+              <span className="settings-version">
+                1.0.0
+              </span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  );
+}
+

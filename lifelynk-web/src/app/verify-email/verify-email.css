@@ -1,0 +1,393 @@
+/* =========================================================
+   LIFELYNK AI — VERIFY EMAIL PAGE
+   ========================================================= */
+
+.lifelynk-verify {
+  min-height: 100vh;
+  padding: 32px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      135deg,
+      #f8fafc 0%,
+      #ffffff 55%,
+      #fef2f2 100%
+    );
+}
+
+.lifelynk-verify__container {
+  width: 100%;
+  max-width: 460px;
+}
+
+.lifelynk-verify__card {
+  width: 100%;
+  padding: 32px;
+  background: var(--lifelynk-surface);
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 24px;
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.lifelynk-verify__heading {
+  text-align: center;
+}
+
+.lifelynk-verify__heading h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+.lifelynk-verify__heading p {
+  max-width: 380px;
+  margin: 12px auto 0;
+
+  color: var(--lifelynk-text-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   EMAIL DISPLAY
+   ========================================================= */
+
+.lifelynk-verify__email {
+  margin-top: 24px;
+  padding: 16px;
+
+  text-align: center;
+
+  background: var(--lifelynk-surface-soft);
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 16px;
+}
+
+.lifelynk-verify__email-label {
+  margin: 0 0 4px;
+
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lifelynk-verify__email-address {
+  margin: 0;
+
+  color: #1e293b;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 650;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   INSTRUCTION
+   ========================================================= */
+
+.lifelynk-verify__instruction {
+  margin-top: 20px;
+  padding: 16px;
+
+  background: var(--lifelynk-green-light);
+  border: 1px solid #a7f3d0;
+  border-radius: 16px;
+}
+
+.lifelynk-verify__instruction-content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.lifelynk-verify__instruction-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 2px;
+
+  color: #ffffff;
+  background: #10b981;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.lifelynk-verify__instruction-title {
+  margin: 0;
+
+  color: #065f46;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.lifelynk-verify__instruction-text {
+  margin: 4px 0 0;
+
+  color: #047857;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   MESSAGES
+   ========================================================= */
+
+.lifelynk-verify__message,
+.lifelynk-verify__error {
+  margin-top: 16px;
+  padding: 12px 16px;
+
+  border-radius: 16px;
+}
+
+.lifelynk-verify__message {
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+}
+
+.lifelynk-verify__message p {
+  margin: 0;
+
+  color: #047857;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.lifelynk-verify__error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+
+.lifelynk-verify__error p {
+  margin: 0;
+
+  color: #b91c1c;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.lifelynk-verify__primary,
+.lifelynk-verify__secondary {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  border-radius: 12px;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.lifelynk-verify__primary {
+  height: 48px;
+  margin-top: 24px;
+
+  padding: 0 20px;
+
+  color: #ffffff;
+  background: var(--lifelynk-red);
+  border: 1px solid var(--lifelynk-red);
+
+  box-shadow:
+    0 5px 14px rgba(198, 40, 40, 0.16);
+}
+
+.lifelynk-verify__primary:hover:not(:disabled) {
+  background: var(--lifelynk-red-dark);
+  border-color: var(--lifelynk-red-dark);
+
+  box-shadow:
+    0 8px 20px rgba(198, 40, 40, 0.22);
+
+  transform: translateY(-1px);
+}
+
+.lifelynk-verify__primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.lifelynk-verify__secondary {
+  height: 44px;
+  margin-top: 12px;
+
+  padding: 0 20px;
+
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid var(--lifelynk-border);
+}
+
+.lifelynk-verify__secondary:hover:not(:disabled) {
+  color: var(--lifelynk-red);
+  background: #f8fafc;
+  border-color: var(--lifelynk-border-dark);
+}
+
+/* =========================================================
+   DISABLED
+   ========================================================= */
+
+.lifelynk-verify__primary:disabled,
+.lifelynk-verify__secondary:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  transform: none;
+}
+
+/* =========================================================
+   SPINNER
+   ========================================================= */
+
+.lifelynk-verify__spinner {
+  width: 16px;
+  height: 16px;
+
+  margin-right: 8px;
+
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+
+  animation: lifelynk-verify-spin 0.7s linear infinite;
+}
+
+.lifelynk-verify__spinner--dark {
+  border-color: #cbd5e1;
+  border-top-color: #334155;
+}
+
+@keyframes lifelynk-verify-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.lifelynk-verify__divider {
+  display: flex;
+  align-items: center;
+
+  margin: 28px 0;
+}
+
+.lifelynk-verify__divider::before,
+.lifelynk-verify__divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+
+  background: var(--lifelynk-border);
+}
+
+.lifelynk-verify__divider span {
+  padding: 0 16px;
+
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* =========================================================
+   REGISTER LINK
+   ========================================================= */
+
+.lifelynk-verify__register {
+  text-align: center;
+}
+
+.lifelynk-verify__register p {
+  margin: 0;
+
+  color: var(--lifelynk-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.lifelynk-verify__register a {
+  color: var(--lifelynk-red);
+  font-weight: 700;
+
+  transition:
+    color 0.18s ease,
+    text-decoration 0.18s ease;
+}
+
+.lifelynk-verify__register a:hover {
+  color: var(--lifelynk-red-dark);
+  text-decoration: underline;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.lifelynk-verify__footer {
+  margin: 20px 0 0;
+
+  text-align: center;
+
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .lifelynk-verify {
+    padding: 24px 14px;
+  }
+
+  .lifelynk-verify__card {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .lifelynk-verify__heading h1 {
+    font-size: 26px;
+  }
+
+
+}

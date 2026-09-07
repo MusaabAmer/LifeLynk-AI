@@ -1,0 +1,249 @@
+/* =========================================================
+   LIFELYNK AI — AUTH ERROR PAGE
+   Page-specific styles
+   ========================================================= */
+
+.lifelynk-auth {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(30, 136, 229, 0.07),
+      transparent 42%
+    ),
+    #f7f9fc;
+
+  color: #172033;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.lifelynk-auth__card {
+  width: 100%;
+  max-width: 470px;
+
+  padding: 42px 40px 38px;
+
+  border: 1px solid #e4e9f0;
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.08);
+
+  text-align: center;
+}
+
+.lifelynk-auth__card--verify {
+  position: relative;
+}
+
+
+/* =========================================================
+   ERROR ICON
+   ========================================================= */
+
+.lifelynk-auth__verify-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 22px;
+
+  border: 8px solid #fff0f0;
+  border-radius: 50%;
+
+  background: #c62828;
+
+  box-shadow:
+    0 8px 22px rgba(198, 40, 40, 0.18);
+}
+
+.lifelynk-auth__verify-icon span {
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.lifelynk-auth__heading {
+  margin: 0;
+}
+
+.lifelynk-auth__eyebrow {
+  margin: 0 0 9px;
+
+  color: #c62828;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+
+  text-transform: uppercase;
+}
+
+.lifelynk-auth__heading h1 {
+  margin: 0;
+
+  color: #003366;
+
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.lifelynk-auth__heading > p:last-child {
+  max-width: 380px;
+
+  margin: 12px auto 0;
+
+  color: #697586;
+
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   MESSAGE
+   ========================================================= */
+
+.lifelynk-auth__verify-message {
+  margin-top: 25px;
+  padding: 18px 20px;
+
+  border: 1px solid #edf0f4;
+  border-radius: 13px;
+
+  background: #f8fafc;
+}
+
+.lifelynk-auth__verify-message p {
+  margin: 0;
+
+  color: #657286;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.lifelynk-auth__verify-message p + p {
+  margin-top: 7px;
+}
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.lifelynk-auth__submit {
+  width: 100%;
+  min-height: 48px;
+
+  margin-top: 24px;
+  padding: 13px 20px;
+
+  border: 0;
+  border-radius: 11px;
+
+  background: #003366;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.2;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.lifelynk-auth__submit:hover {
+  background: #00447f;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 18px rgba(0, 51, 102, 0.18);
+}
+
+.lifelynk-auth__submit:active {
+  transform: translateY(0);
+}
+
+.lifelynk-auth__submit:focus-visible {
+  outline: 3px solid rgba(30, 136, 229, 0.25);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 520px) {
+  .lifelynk-auth {
+    align-items: flex-start;
+
+    padding: 20px 14px;
+  }
+
+  .lifelynk-auth__card {
+    margin-top: 12px;
+
+    padding: 32px 22px 28px;
+
+    border-radius: 18px;
+  }
+
+
+
+  .lifelynk-auth__verify-icon {
+    width: 58px;
+    height: 58px;
+
+    border-width: 7px;
+
+    margin-bottom: 19px;
+  }
+
+  .lifelynk-auth__verify-icon span {
+    font-size: 22px;
+  }
+
+  .lifelynk-auth__heading h1 {
+    font-size: 26px;
+  }
+
+  .lifelynk-auth__heading > p:last-child {
+    font-size: 13px;
+  }
+
+  .lifelynk-auth__verify-message {
+    padding: 16px;
+  }
+}

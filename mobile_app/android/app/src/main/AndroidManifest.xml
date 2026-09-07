@@ -1,8 +1,58 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ========================================================= -->
+    <!-- INTERNET                                                   -->
+    <!-- ========================================================= -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- ========================================================= -->
+    <!-- MICROPHONE / SPEECH RECOGNITION                            -->
+    <!--                                                             -->
+    <!-- Required by speech_to_text for voice input.               -->
+    <!-- The user will be asked for microphone permission at        -->
+    <!-- runtime when speech recognition is initialized.           -->
+    <!-- ========================================================= -->
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- ========================================================= -->
+    <!-- LOCATION                                                   -->
+    <!--                                                             -->
+    <!-- ACCESS_FINE_LOCATION provides precise GPS location.       -->
+    <!-- ACCESS_COARSE_LOCATION provides approximate location.     -->
+    <!-- ========================================================= -->
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- ========================================================= -->
+    <!-- MEDIA                                                      -->
+    <!-- ========================================================= -->
+
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <!--
+        READ_EXTERNAL_STORAGE is kept for compatibility with
+        older Android versions / existing LifeLynk functionality.
+    -->
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!-- ========================================================= -->
+    <!-- APPLICATION                                                -->
+    <!-- ========================================================= -->
+
     <application
-        android:label="mobile_app"
+        android:label="LifeLynk AI"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- ===================================================== -->
+        <!-- MAIN FLUTTER ACTIVITY                                 -->
+        <!-- ===================================================== -->
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -12,34 +62,76 @@
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
-            <!-- Specifies an Android theme to apply to this Activity as soon as
-                 the Android process has started. This theme is visible to the user
-                 while the Flutter UI initializes. After that, this theme continues
-                 to determine the Window background behind the Flutter UI. -->
+
+            <!-- Flutter normal theme -->
             <meta-data
-              android:name="io.flutter.embedding.android.NormalTheme"
-              android:resource="@style/NormalTheme"
-              />
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+
+            <!--
+                Disable Flutter's default deep-link handler.
+
+                Supabase Flutter handles its authentication
+                deep links internally. Without this setting,
+                Flutter forwards lifelynk://auth/confirm to
+                GoRouter, which produces:
+
+                GoException:
+                no routes for location:
+                lifelynk://auth/confirm
+            -->
+            <meta-data
+                android:name="flutter_deeplinking_enabled"
+                android:value="false" />
+
+            <!-- App launcher -->
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <!-- Supabase auth deep link -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="lifelynk"
+                    android:host="auth" />
+            </intent-filter>
+
         </activity>
-        <!-- Don't delete the meta-data below.
-             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+
+        <!-- ===================================================== -->
+        <!-- FLUTTER ENGINE                                        -->
+        <!-- ===================================================== -->
+
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-    </application>
-    <!-- Required to query activities that can process text, see:
-         https://developer.android.com/training/package-visibility and
-         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
 
-         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
+    </application>
+
+    <!-- ========================================================= -->
+    <!-- PACKAGE VISIBILITY                                        -->
+    <!-- ========================================================= -->
+
     <queries>
+
+        <!-- Flutter text processing -->
         <intent>
-            <action android:name="android.intent.action.PROCESS_TEXT"/>
-            <data android:mimeType="text/plain"/>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+            <data android:mimeType="text/plain" />
         </intent>
+
+        <!-- Android speech recognition service -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+
     </queries>
+
 </manifest>
+

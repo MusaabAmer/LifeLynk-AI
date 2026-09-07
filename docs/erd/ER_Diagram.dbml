@@ -1,0 +1,568 @@
+//////////////////////////////////////////////////////
+// LifeLynk AI ER Diagram
+// Part 1 - Authentication & Location
+//////////////////////////////////////////////////////
+
+Table roles {
+  id uuid [pk]
+  name varchar(50) [not null, unique]
+  description varchar(255)
+
+  created_at timestamp
+
+  updated_at timestamp
+}
+
+
+
+Table users {
+
+  id uuid [pk]
+
+  role_id uuid [not null]
+
+  email varchar(255) [not null, unique]
+
+  full_name varchar(150) [not null]
+
+  phone_number varchar(20)
+
+  is_active boolean
+
+  is_verified boolean
+
+  last_login_at timestamp
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table refresh_tokens {
+
+  id uuid [pk]
+
+  user_id uuid [not null]
+
+  token_hash text [not null]
+
+  expires_at timestamp [not null]
+
+  revoked_at timestamp
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table provinces {
+
+  id uuid [pk]
+
+  name varchar(100) [not null, unique]
+
+  code varchar(10) [not null, unique]
+
+  is_active boolean
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table cities {
+
+  id uuid [pk]
+
+  province_id uuid [not null]
+
+  name varchar(100) [not null]
+
+  code varchar(20) [not null]
+
+  is_active boolean
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Relationships
+//////////////////////////////////////////////////////
+
+Ref: users.role_id > roles.id
+
+Ref: refresh_tokens.user_id > users.id
+
+Ref: cities.province_id > provinces.id
+
+//////////////////////////////////////////////////////
+// LifeLynk AI ER Diagram
+// Part 2 - Organizations
+//////////////////////////////////////////////////////
+
+Table organizations {
+
+  id uuid [pk]
+
+  city_id uuid [not null]
+
+  organization_type varchar(30) [not null]
+
+  name varchar(200) [not null]
+
+  email varchar(255)
+
+  phone varchar(20)
+
+  address text
+
+  latitude decimal(10,7)
+
+  longitude decimal(10,7)
+
+  license_number varchar(100)
+
+  is_verified boolean
+
+  is_active boolean
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table hospitals {
+
+  id uuid [pk]
+
+  organization_id uuid [not null, unique]
+
+  hospital_type varchar(100)
+
+  emergency_service boolean
+
+  blood_storage_available boolean
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table blood_banks {
+
+  id uuid [pk]
+
+  organization_id uuid [not null, unique]
+
+  government_registered boolean
+
+  operating_hours varchar(100)
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table organization_staff {
+
+  id uuid [pk]
+
+  organization_id uuid [not null]
+
+  user_id uuid [not null]
+
+  designation varchar(100)
+
+  department varchar(100)
+
+  joined_at timestamp
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Relationships
+//////////////////////////////////////////////////////
+
+Ref: organizations.city_id > cities.id
+
+Ref: hospitals.organization_id > organizations.id
+
+Ref: blood_banks.organization_id > organizations.id
+
+Ref: organization_staff.organization_id > organizations.id
+
+Ref: organization_staff.user_id > users.id
+
+//////////////////////////////////////////////////////
+// Patients
+//////////////////////////////////////////////////////
+
+Table patients {
+
+  id uuid [pk]
+
+  user_id uuid [not null, unique]
+
+  blood_group_id uuid
+
+  date_of_birth date
+
+  gender varchar(20)
+
+  emergency_contact varchar(20)
+
+  medical_notes text
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Relationships
+//////////////////////////////////////////////////////
+
+Ref: patients.user_id > users.id
+
+Ref: patients.blood_group_id > blood_groups.id
+
+//////////////////////////////////////////////////////
+// LifeLynk AI ER Diagram
+// Part 3 - Blood Management
+//////////////////////////////////////////////////////
+
+Table blood_groups {
+
+  id uuid [pk]
+
+  blood_group varchar(5) [not null, unique]
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table blood_inventory {
+
+  id uuid [pk]
+
+  organization_id uuid [not null]
+
+  blood_group_id uuid [not null]
+
+  total_units int
+
+  available_units int
+
+  reserved_units int
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table blood_requests {
+
+  id uuid [pk]
+
+  patient_id uuid [not null]
+
+  blood_group_id uuid [not null]
+
+  hospital_id uuid
+
+  units_required int
+
+  urgency varchar(30)
+
+  status varchar(30)
+
+  required_before timestamp
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table blood_reservations {
+
+  id uuid [pk]
+
+  blood_request_id uuid [not null]
+
+  blood_inventory_id uuid [not null]
+
+  units_reserved int
+
+  status varchar(30)
+
+  reserved_until timestamp
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Relationships
+//////////////////////////////////////////////////////
+
+Ref: blood_inventory.organization_id > organizations.id
+
+Ref: blood_inventory.blood_group_id > blood_groups.id
+
+Ref: blood_requests.patient_id > patients.id
+
+Ref: blood_requests.blood_group_id > blood_groups.id
+
+Ref: blood_requests.hospital_id > hospitals.id
+
+Ref: blood_reservations.blood_request_id > blood_requests.id
+
+Ref: blood_reservations.blood_inventory_id > blood_inventory.id
+
+
+//////////////////////////////////////////////////////
+// LifeLynk AI ER Diagram
+// Part 4 - Donors, Emergency, AI & System
+//////////////////////////////////////////////////////
+
+Table donors {
+
+  id uuid [pk]
+
+  user_id uuid [not null]
+
+  blood_group_id uuid [not null]
+
+  city_id uuid [not null]
+
+  weight decimal
+
+  last_donation_date date
+
+  total_donations int
+
+  is_verified bool
+
+  is_available bool
+
+  created_at timestamp
+
+  updated_at timestamp
+
+  deleted_at timestamp
+}
+
+Table donor_availability {
+
+  id uuid [pk]
+
+  donor_id uuid [not null]
+
+  available bool
+
+  latitude decimal
+
+  longitude decimal
+
+  updated_at timestamp
+}
+
+Table donation_history {
+
+  id uuid [pk]
+
+  donor_id uuid [not null]
+
+  organization_id uuid [not null]
+
+  blood_group_id uuid [not null]
+
+  quantity int
+
+  donation_date date
+
+  certificate_url text
+
+  created_at timestamp
+}
+
+Table donor_matches {
+
+  id uuid [pk]
+
+  request_id uuid [not null]
+
+  donor_id uuid [not null]
+
+  ai_score decimal
+
+  distance_km decimal
+
+  status varchar(30)
+
+  created_at timestamp
+}
+
+Table emergency_sos {
+
+  id uuid [pk]
+
+  user_id uuid [not null]
+
+  blood_group_id uuid [not null]
+
+  city_id uuid [not null]
+
+  units_required int
+
+  priority varchar(30)
+
+  status varchar(30)
+
+  created_at timestamp
+
+  updated_at timestamp
+}
+
+Table notifications {
+
+  id uuid [pk]
+
+  user_id uuid [not null]
+
+  title varchar(255)
+
+  message text
+
+  type varchar(50)
+
+  status varchar(30)
+
+  created_at timestamp
+
+  read_at timestamp
+}
+
+Table ai_chat_history {
+
+  id uuid [pk]
+
+  user_id uuid [not null]
+
+  question text
+
+  answer text
+
+  model_name varchar(100)
+
+  created_at timestamp
+}
+
+
+Table audit_logs {
+
+  id uuid [pk]
+
+  user_id uuid
+
+  action varchar(100)
+
+  entity varchar(100)
+
+  entity_id uuid
+
+  ip_address varchar(100)
+
+  created_at timestamp
+}
+
+
+Table government_analytics {
+
+  id uuid [pk]
+
+  province_id uuid
+
+  city_id uuid
+
+  total_requests int
+
+  successful_donations int
+
+  emergency_cases int
+
+  generated_at timestamp
+}
+
+//////////////////////////////////////////////////////
+// Relationships
+//////////////////////////////////////////////////////
+
+Ref: donors.user_id > users.id
+
+Ref: donors.city_id > cities.id
+
+Ref: donors.blood_group_id > blood_groups.id
+
+Ref: donor_availability.donor_id > donors.id
+
+Ref: donation_history.donor_id > donors.id
+
+Ref: donation_history.organization_id > organizations.id
+
+Ref: donation_history.blood_group_id > blood_groups.id
+
+Ref: donor_matches.request_id > blood_requests.id
+
+Ref: donor_matches.donor_id > donors.id
+
+Ref: emergency_sos.user_id > users.id
+
+Ref: emergency_sos.blood_group_id > blood_groups.id
+
+Ref: emergency_sos.city_id > cities.id
+
+Ref: notifications.user_id > users.id
+
+Ref: ai_chat_history.user_id > users.id
+
+Ref: audit_logs.user_id > users.id
+
+Ref: government_analytics.province_id > provinces.id
+
+Ref: government_analytics.city_id > cities.id
+
+Ref: "provinces"."code" ?<? "provinces"."deleted_at"

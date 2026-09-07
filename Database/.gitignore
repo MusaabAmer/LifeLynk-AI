@@ -1,0 +1,181 @@
+#################################################
+# LifeLynk AI
+# FastAPI + PostgreSQL + Flutter
+#################################################
+
+############################
+# Python
+############################
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+############################
+# Virtual Environment
+############################
+.venv/
+venv/
+env/
+ENV/
+
+############################
+# Environment Variables
+############################
+.env
+.env.*
+!.env.example
+
+############################
+# IDEs
+############################
+.vscode/
+.idea/
+*.iml
+
+############################
+# Operating System
+############################
+.DS_Store
+Thumbs.db
+desktop.ini
+
+############################
+# Logs
+############################
+*.log
+logs/
+
+############################
+# Temporary Files
+############################
+*.tmp
+*.temp
+*.bak
+*.swp
+
+############################
+# Archives / Backups
+############################
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+############################
+# Python Build
+############################
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+############################
+# Testing
+############################
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+############################
+# Type Checkers
+############################
+.mypy_cache/
+.pyre/
+.pytype/
+
+############################
+# Ruff / Lint
+############################
+.ruff_cache/
+
+############################
+# Jupyter
+############################
+.ipynb_checkpoints/
+
+############################
+# SQLite
+############################
+*.sqlite
+*.sqlite3
+*.db
+
+############################
+# Alembic
+############################
+alembic/__pycache__/
+
+############################
+# Local Database Dumps
+############################
+*.sql
+*.dump
+
+############################
+# Uploaded Files
+############################
+uploads/
+media/
+
+############################
+# Secrets / Keys
+############################
+*.pem
+*.key
+*.crt
+
+############################
+# Node (if frontend added later)
+############################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+############################
+# Flutter
+############################
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/build/
+**/coverage/
+**/.metadata
+
+############################
+# Android
+############################
+**/android/.gradle/
+**/android/app/debug/
+**/android/app/profile/
+**/android/app/release/
+
+############################
+# iOS
+############################
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/App.framework
+
+############################
+# Generated Data Files
+############################
+backend/app/database/seeds/data/world_locations.json
+
+############################
+# Keep Important Seed Data
+############################
+!backend/app/database/seeds/data/pakistan_locations.json
+
+############################
+# Git
+############################
+*.orig
+*.rej

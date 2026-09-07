@@ -1,0 +1,97 @@
+# =========================================================
+# LifeLynk AI — Root Git Ignore
+# =========================================================
+
+# -------------------------
+# Environment / secrets
+# -------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Firebase / Google credentials
+google-services.json
+GoogleService-Info.plist
+service-account*.json
+*-service-account.json
+firebase-adminsdk-*.json
+
+# -------------------------
+# Node / Next.js
+# -------------------------
+node_modules/
+.next/
+out/
+.turbo/
+.vercel/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+next-env.d.ts
+
+# -------------------------
+# Flutter / Dart
+# -------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+build/
+
+# Flutter generated platform files
+android/.gradle/
+android/local.properties
+android/key.properties
+
+ios/Pods/
+ios/.symlinks/
+
+# -------------------------
+# Python / FastAPI
+# -------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# -------------------------
+# IDE
+# -------------------------
+.idea/
+.vscode/
+*.iml
+
+# -------------------------
+# OS
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+
+# -------------------------
+# Build / temporary files
+# -------------------------
+*.tmp
+*.temp
+*.swp

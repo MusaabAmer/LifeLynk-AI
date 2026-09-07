@@ -1,0 +1,36 @@
+import '../models/search_result_model.dart';
+
+final List<SearchResultModel> mockSearchResults = [
+  SearchResultModel(
+    id: 'inventory_001',
+    organizationId: 'org_001',
+    organizationName: 'Shaukat Khanum Hospital',
+    organizationType: 'Hospital',
+    bloodGroup: 'A+',
+    availableUnits: 15,
+    province: 'Punjab',
+    city: 'Lahore',
+    address: 'Johar Town Lahore',
+    phone: '042-111-155-555',
+    latitude: 31.4697,
+    longitude: 74.2728,
+    distanceKm: 3.2,
+    isOpen: true,
+  ),
+  SearchResultModel(
+    id: 'inventory_002',
+    organizationId: 'org_002',
+    organizationName: 'Indus Blood Bank',
+    organizationType: 'Blood Bank',
+    bloodGroup: 'O+',
+    availableUnits: 30,
+    province: 'Sindh',
+    city: 'Karachi',
+    address: 'Clifton Karachi',
+    phone: '021-111-111-111',
+    latitude: 24.8138,
+    longitude: 67.0304,
+    distanceKm: 5.5,
+    isOpen: true,
+  ),
+];

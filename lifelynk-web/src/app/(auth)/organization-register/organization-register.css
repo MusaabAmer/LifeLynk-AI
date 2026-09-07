@@ -1,0 +1,1165 @@
+/* =========================================================
+   LIFELYNK AI
+   ORGANIZATION REGISTRATION PAGE
+   Page-specific styles
+   ========================================================= */
+
+
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+
+.lifelynk-organization-register {
+  --ll-red: #c62828;
+  --ll-red-dark: #a61f1f;
+  --ll-red-light: #fff1f1;
+
+  --ll-navy: #003366;
+  --ll-navy-dark: #00264d;
+  --ll-blue: #1e88e5;
+  --ll-blue-light: #eef7ff;
+
+  --ll-green: #16803c;
+  --ll-green-light: #edf9f1;
+
+  --ll-text: #172033;
+  --ll-text-secondary: #596579;
+  --ll-muted: #7b8798;
+
+  --ll-border: #dfe5ec;
+  --ll-border-light: #edf0f4;
+
+  --ll-background: #f5f7fa;
+  --ll-white: #ffffff;
+
+  --ll-radius-sm: 8px;
+  --ll-radius-md: 12px;
+  --ll-radius-lg: 16px;
+  --ll-radius-xl: 20px;
+
+  --ll-shadow-sm:
+    0 2px 8px rgba(16, 24, 40, 0.05);
+
+  --ll-shadow-md:
+    0 8px 24px rgba(16, 24, 40, 0.07);
+
+  --ll-shadow-lg:
+    0 18px 50px rgba(16, 24, 40, 0.10);
+
+  --ll-transition:
+    160ms ease;
+}
+
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+.lifelynk-auth-page {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 48px 24px 64px;
+
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(198, 40, 40, 0.055),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(30, 136, 229, 0.05),
+      transparent 30%
+    ),
+    #f5f7fa;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.lifelynk-auth-card.lifelynk-organization-register {
+  width: min(1120px, 100%);
+
+  padding: 0;
+
+  background: var(--ll-white);
+
+  border: 1px solid rgba(223, 229, 236, 0.9);
+
+  border-radius: 22px;
+
+  box-shadow: var(--ll-shadow-lg);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.lifelynk-auth-card__header {
+  position: relative;
+
+  padding: 38px 42px 34px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #fbfcfe 60%,
+      #f5f9fd 100%
+    );
+
+  border-bottom: 1px solid var(--ll-border-light);
+}
+
+
+/* Accent line */
+
+.lifelynk-auth-card__header::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--ll-red),
+      var(--ll-red) 55%,
+      var(--ll-blue)
+    );
+}
+
+
+/* Header content */
+
+.lifelynk-auth-card__header > div {
+  max-width: 760px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.lifelynk-auth-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: 10px;
+
+  padding: 6px 11px;
+
+  border-radius: 999px;
+
+  background: var(--ll-blue-light);
+
+  color: var(--ll-navy);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   PAGE TITLE
+   ========================================================= */
+
+.lifelynk-auth-card__header h1 {
+  margin: 0;
+
+  color: var(--ll-navy);
+
+  font-size: clamp(28px, 4vw, 38px);
+
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  letter-spacing: -0.025em;
+}
+
+
+.lifelynk-auth-card__header p {
+  max-width: 680px;
+
+  margin: 12px 0 0;
+
+  color: var(--ll-text-secondary);
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.lifelynk-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  margin: 24px 42px 0;
+
+  padding: 15px 17px;
+
+  border: 1px solid;
+
+  border-radius: var(--ll-radius-md);
+}
+
+
+.lifelynk-alert > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  min-width: 0;
+}
+
+
+.lifelynk-alert strong {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+
+.lifelynk-alert span {
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* Error */
+
+.lifelynk-alert--error {
+  background: #fff5f5;
+
+  border-color: #f2caca;
+
+  color: #9d2020;
+}
+
+
+/* Success */
+
+.lifelynk-alert--success {
+  background: var(--ll-green-light);
+
+  border-color: #bce5c8;
+
+  color: #146b32;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.organization-registration-form {
+  width: 100%;
+
+  padding: 30px 42px 42px;
+}
+
+
+/* =========================================================
+   REGISTRATION SECTIONS
+   ========================================================= */
+
+.organization-registration-section {
+  margin-top: 22px;
+
+  padding: 28px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--ll-border);
+
+  border-radius: var(--ll-radius-lg);
+
+  box-shadow: var(--ll-shadow-sm);
+}
+
+
+.organization-registration-section:first-child {
+  margin-top: 0;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.organization-registration-section__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+}
+
+
+.organization-registration-section__header h2 {
+  margin: 0;
+
+  color: var(--ll-navy);
+
+  font-size: 18px;
+
+  line-height: 1.3;
+
+  font-weight: 800;
+
+  letter-spacing: -0.01em;
+}
+
+
+.organization-registration-section__header p {
+  max-width: 680px;
+
+  margin: 6px 0 0;
+
+  color: var(--ll-text-secondary);
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   ORGANIZATION TYPE GRID
+   ========================================================= */
+
+.organization-type-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   ORGANIZATION TYPE CARD
+   ========================================================= */
+
+.organization-type-card {
+  position: relative;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  min-height: 118px;
+
+  padding: 20px;
+
+  text-align: left;
+
+  background: #ffffff;
+
+  border: 1.5px solid var(--ll-border);
+
+  border-radius: var(--ll-radius-md);
+
+  color: var(--ll-text);
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--ll-transition),
+    background-color var(--ll-transition),
+    box-shadow var(--ll-transition),
+    transform var(--ll-transition);
+}
+
+
+.organization-type-card:hover:not(:disabled) {
+  border-color: #b8c4d2;
+
+  background: #fbfcfe;
+
+  box-shadow: var(--ll-shadow-sm);
+
+  transform: translateY(-1px);
+}
+
+
+.organization-type-card.is-selected {
+  border-color: var(--ll-red);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff8f8,
+      #ffffff
+    );
+
+  box-shadow:
+    0 0 0 3px rgba(198, 40, 40, 0.08);
+}
+
+
+.organization-type-card:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   TYPE ICON
+   ========================================================= */
+
+.organization-type-card__icon {
+  flex: 0 0 52px;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: #f3f6fa;
+
+  font-size: 27px;
+
+  line-height: 1;
+}
+
+
+.organization-type-card.is-selected
+.organization-type-card__icon {
+  background: var(--ll-red-light);
+}
+
+
+/* =========================================================
+   TYPE TEXT
+   ========================================================= */
+
+.organization-type-card > span:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.organization-type-card strong {
+  color: var(--ll-text);
+
+  font-size: 15px;
+
+  font-weight: 800;
+}
+
+
+.organization-type-card small {
+  color: var(--ll-text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   SELECTED CHECK MARK
+   ========================================================= */
+
+.organization-type-card.is-selected::after {
+  content: "✓";
+
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  width: 23px;
+  height: 23px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--ll-red);
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.lifelynk-form__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   FORM FIELD
+   ========================================================= */
+
+.lifelynk-form__field {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.lifelynk-form__field--full {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.lifelynk-form__field > label {
+  display: block;
+
+  color: #263247;
+
+  font-size: 13px;
+
+  font-weight: 750;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   INPUT + SELECT
+   ========================================================= */
+
+.lifelynk-form__field input,
+.lifelynk-form__field select {
+  width: 100%;
+
+  min-height: 46px;
+
+  padding: 11px 13px;
+
+  border: 1px solid #d5dce5;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: var(--ll-text);
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  line-height: 1.4;
+
+  transition:
+    border-color var(--ll-transition),
+    box-shadow var(--ll-transition),
+    background-color var(--ll-transition);
+}
+
+
+/* =========================================================
+   INPUT PLACEHOLDER
+   ========================================================= */
+
+.lifelynk-form__field input::placeholder {
+  color: #a1aab8;
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.lifelynk-form__field select {
+  cursor: pointer;
+
+  appearance: auto;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+   ========================================================= */
+
+.lifelynk-form__field input:focus,
+.lifelynk-form__field select:focus {
+  border-color: var(--ll-blue);
+
+  box-shadow:
+    0 0 0 3px rgba(30, 136, 229, 0.10);
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   INPUT HOVER
+   ========================================================= */
+
+.lifelynk-form__field input:hover:not(:disabled),
+.lifelynk-form__field select:hover:not(:disabled) {
+  border-color: #b8c3d0;
+}
+
+
+/* =========================================================
+   DISABLED FIELDS
+   ========================================================= */
+
+.lifelynk-form__field input:disabled,
+.lifelynk-form__field select:disabled {
+  background: #f5f7f9;
+
+  color: #8994a3;
+
+  cursor: not-allowed;
+
+  opacity: 0.85;
+}
+
+
+/* =========================================================
+   NUMBER INPUT
+   ========================================================= */
+
+.lifelynk-form__field input[type="number"] {
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   HELPER TEXT
+   ========================================================= */
+
+.lifelynk-form__field > small {
+  display: block;
+
+  margin-top: 1px;
+
+  color: var(--ll-muted);
+
+  font-size: 11px;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   ORGANIZATION TOGGLE
+   ========================================================= */
+
+.organization-toggle {
+  min-width: 0;
+}
+
+
+.organization-toggle > label {
+  min-height: 78px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 15px 16px;
+
+  border: 1px solid var(--ll-border);
+
+  border-radius: 12px;
+
+  background: #fbfcfd;
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--ll-transition),
+    background-color var(--ll-transition),
+    box-shadow var(--ll-transition);
+}
+
+
+.organization-toggle > label:hover {
+  border-color: #c5ced9;
+
+  background: #ffffff;
+
+  box-shadow: var(--ll-shadow-sm);
+}
+
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.organization-toggle input[type="checkbox"] {
+  flex: 0 0 auto;
+
+  width: 19px;
+  height: 19px;
+
+  margin: 0;
+
+  accent-color: var(--ll-red);
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   TOGGLE TEXT
+   ========================================================= */
+
+.organization-toggle label > span {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.organization-toggle strong {
+  color: var(--ll-text);
+
+  font-size: 13px;
+
+  font-weight: 750;
+}
+
+
+.organization-toggle small {
+  color: var(--ll-text-secondary);
+
+  font-size: 11px;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   SUBMIT AREA
+   ========================================================= */
+
+.organization-registration-submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 28px;
+
+  margin-top: 28px;
+
+  padding: 24px 26px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fafc,
+      #f4f8fc
+    );
+
+  border: 1px solid #dce4ec;
+
+  border-radius: var(--ll-radius-lg);
+}
+
+
+/* =========================================================
+   SUBMIT TEXT
+   ========================================================= */
+
+.organization-registration-submit > div {
+  min-width: 0;
+}
+
+
+.organization-registration-submit strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--ll-navy);
+
+  font-size: 14px;
+
+  font-weight: 800;
+}
+
+
+.organization-registration-submit p {
+  max-width: 600px;
+
+  margin: 0;
+
+  color: var(--ll-text-secondary);
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.lifelynk-button {
+  flex: 0 0 auto;
+
+  min-height: 48px;
+
+  padding: 12px 20px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--ll-transition),
+    box-shadow var(--ll-transition),
+    transform var(--ll-transition),
+    opacity var(--ll-transition);
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.lifelynk-button--primary {
+  background: var(--ll-red);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 14px rgba(198, 40, 40, 0.20);
+}
+
+
+.lifelynk-button--primary:hover:not(:disabled) {
+  background: var(--ll-red-dark);
+
+  box-shadow:
+    0 7px 18px rgba(198, 40, 40, 0.26);
+
+  transform: translateY(-1px);
+}
+
+
+.lifelynk-button--primary:active:not(:disabled) {
+  transform: translateY(0);
+
+  box-shadow:
+    0 3px 8px rgba(198, 40, 40, 0.18);
+}
+
+
+.lifelynk-button--primary:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   LOADING STATE
+   ========================================================= */
+
+.lifelynk-button--primary:disabled {
+  position: relative;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.organization-type-card:focus-visible,
+.lifelynk-button:focus-visible {
+  outline: 3px solid rgba(30, 136, 229, 0.25);
+
+  outline-offset: 2px;
+}
+
+
+.organization-toggle input[type="checkbox"]:focus-visible {
+  outline: 3px solid rgba(30, 136, 229, 0.22);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+  .lifelynk-auth-page {
+    padding: 28px 16px 40px;
+  }
+
+  .lifelynk-auth-card.lifelynk-organization-register {
+    border-radius: 18px;
+  }
+
+  .lifelynk-auth-card__header {
+    padding: 32px 28px 28px;
+  }
+
+  .lifelynk-alert {
+    margin-left: 28px;
+    margin-right: 28px;
+  }
+
+  .organization-registration-form {
+    padding: 24px 28px 32px;
+  }
+
+  .organization-registration-section {
+    padding: 22px;
+  }
+
+  .organization-registration-submit {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .organization-registration-submit .lifelynk-button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .lifelynk-auth-page {
+    padding: 0;
+  }
+
+  .lifelynk-auth-card.lifelynk-organization-register {
+    width: 100%;
+
+    min-height: 100vh;
+
+    border: 0;
+
+    border-radius: 0;
+
+    box-shadow: none;
+  }
+
+  .lifelynk-auth-card__header {
+    padding: 30px 20px 26px;
+  }
+
+  .lifelynk-auth-card__header h1 {
+    font-size: 27px;
+  }
+
+  .lifelynk-auth-card__header p {
+    font-size: 13px;
+  }
+
+  .lifelynk-alert {
+    margin: 18px 20px 0;
+
+    padding: 13px 14px;
+  }
+
+  .organization-registration-form {
+    padding: 20px;
+  }
+
+  .organization-registration-section {
+    margin-top: 16px;
+
+    padding: 18px;
+
+    border-radius: 14px;
+  }
+
+  .organization-registration-section__header {
+    margin-bottom: 19px;
+  }
+
+  .organization-registration-section__header h2 {
+    font-size: 16px;
+  }
+
+  .organization-registration-section__header p {
+    font-size: 12px;
+  }
+
+  .organization-type-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .organization-type-card {
+    min-height: 100px;
+
+    padding: 16px;
+  }
+
+  .organization-type-card__icon {
+    width: 46px;
+    height: 46px;
+
+    flex-basis: 46px;
+
+    font-size: 24px;
+  }
+
+  .lifelynk-form__grid {
+    grid-template-columns: 1fr;
+
+    gap: 17px;
+  }
+
+  .lifelynk-form__field--full {
+    grid-column: auto;
+  }
+
+  .lifelynk-form__field input,
+  .lifelynk-form__field select {
+    min-height: 47px;
+  }
+
+  .organization-toggle > label {
+    min-height: 74px;
+  }
+
+  .organization-registration-submit {
+    margin-top: 20px;
+
+    padding: 19px;
+
+    gap: 18px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+  .lifelynk-auth-card__header {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .lifelynk-alert {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .organization-registration-form {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .organization-registration-section {
+    padding: 15px;
+  }
+
+  .organization-type-card {
+    gap: 12px;
+  }
+
+  .organization-type-card small {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .lifelynk-organization-register *,
+  .lifelynk-organization-register *::before,
+  .lifelynk-organization-register *::after {
+    scroll-behavior: auto !important;
+
+    transition: none !important;
+
+    animation: none !important;
+  }
+}

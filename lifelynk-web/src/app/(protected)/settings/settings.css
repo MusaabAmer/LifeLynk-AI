@@ -1,0 +1,664 @@
+
+/* =========================================================
+   LIFELYNK AI — SETTINGS
+   Page-specific settings styles
+   ========================================================= */
+
+.settings-page {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 36px 56px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.settings-page__header {
+  margin-bottom: 28px;
+}
+
+.settings-page__eyebrow {
+  margin: 0 0 7px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--lifelynk-blue);
+}
+
+.settings-page__header h2 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 800;
+  color: var(--lifelynk-navy);
+}
+
+.settings-page__description {
+  max-width: 680px;
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--lifelynk-text-secondary);
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.settings-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.settings-card {
+  overflow: hidden;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 16px;
+  background: var(--lifelynk-surface);
+  box-shadow: var(--lifelynk-shadow-sm);
+}
+
+.settings-card__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 21px 24px;
+  border-bottom: 1px solid var(--lifelynk-border);
+}
+
+.settings-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 12px;
+  background: rgba(30, 136, 229, 0.12);
+  color: var(--lifelynk-blue);
+  font-size: 19px;
+}
+
+.settings-card__header h3 {
+  margin: 0;
+  color: var(--lifelynk-text);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.settings-card__header p {
+  margin: 4px 0 0;
+  color: var(--lifelynk-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   ROWS
+   ========================================================= */
+
+.settings-list {
+  width: 100%;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 82px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--lifelynk-border);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.settings-row:last-child {
+  border-bottom: 0;
+}
+
+.settings-row:hover {
+  background: var(--lifelynk-surface-soft);
+}
+
+.settings-row__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 10px;
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-secondary);
+  font-size: 16px;
+}
+
+.settings-row__content {
+  min-width: 0;
+  flex: 1;
+}
+
+.settings-row__content strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--lifelynk-text);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.settings-row__content span {
+  display: block;
+  max-width: 650px;
+  color: var(--lifelynk-text-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   TOGGLE
+   ========================================================= */
+
+.settings-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.settings-toggle__track {
+  position: relative;
+  display: block;
+  width: 42px;
+  height: 23px;
+  border-radius: 999px;
+  background: var(--lifelynk-border-dark);
+  transition: background-color 180ms ease;
+}
+
+.settings-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--lifelynk-surface);
+  box-shadow: 0 1px 4px rgba(15, 39, 66, 0.2);
+  transition: transform 180ms ease;
+}
+
+.settings-toggle--active .settings-toggle__track {
+  background: var(--lifelynk-blue);
+}
+
+.settings-toggle--active .settings-toggle__thumb {
+  transform: translateX(19px);
+}
+
+.settings-toggle__label {
+  min-width: 23px;
+  color: var(--lifelynk-text-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   VALUES
+   ========================================================= */
+
+.settings-value,
+.settings-version {
+  flex: 0 0 auto;
+  padding: 6px 11px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 8px;
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-secondary);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.settings-version {
+  color: var(--lifelynk-blue);
+  background: rgba(30, 136, 229, 0.1);
+  border-color: var(--lifelynk-border);
+}
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.settings-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  min-width: 92px;
+  padding: 9px 13px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 9px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text-secondary);
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.settings-action:hover {
+  border-color: var(--lifelynk-blue);
+  background: rgba(30, 136, 229, 0.08);
+  color: var(--lifelynk-blue);
+  transform: translateY(-1px);
+}
+
+.settings-action:active {
+  transform: translateY(0);
+}
+
+.settings-action span {
+  font-size: 14px;
+}
+
+/* =========================================================
+   NOTICE
+   ========================================================= */
+
+.settings-notice {
+  margin: 0 24px 20px;
+  padding: 11px 13px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 9px;
+  background: rgba(30, 136, 229, 0.08);
+  color: var(--lifelynk-text-secondary);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.settings-about {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 0 24px 18px;
+  padding: 16px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 12px;
+  background: var(--lifelynk-surface-soft);
+}
+
+
+.settings-about h4 {
+  margin: 0 0 5px;
+  color: var(--lifelynk-text);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.settings-about p {
+  margin: 0;
+  color: var(--lifelynk-text-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.settings-toggle:focus-visible,
+.settings-action:focus-visible {
+  outline: 3px solid rgba(30, 136, 229, 0.2);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   PASSWORD MANAGEMENT
+   ========================================================= */
+
+.settings-password {
+  margin: 0 24px 20px;
+  padding: 20px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 12px;
+  background: var(--lifelynk-surface-soft);
+}
+
+.settings-password__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.settings-password__header h4 {
+  margin: 0 0 5px;
+  color: var(--lifelynk-text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.settings-password__header p {
+  margin: 0;
+  color: var(--lifelynk-text-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.settings-password__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  padding: 0;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 8px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text-secondary);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.settings-password__close:hover {
+  border-color: var(--lifelynk-border-dark);
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text);
+}
+
+.settings-password__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.settings-password__fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.settings-password__fields label span {
+  color: var(--lifelynk-text-secondary);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.settings-password__fields input {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 11px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 8px;
+  outline: none;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text);
+  font-family: inherit;
+  font-size: 12px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.settings-password__fields input::placeholder {
+  color: var(--lifelynk-text-muted);
+}
+
+.settings-password__fields input:focus {
+  border-color: var(--lifelynk-blue);
+  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+}
+
+.settings-password__fields input:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.settings-password__error,
+.settings-password__success {
+  margin-top: 15px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.settings-password__error {
+  border: 1px solid var(--lifelynk-error-border, #fecaca);
+  background: var(--lifelynk-error-bg, #fef2f2);
+  color: var(--lifelynk-error-text, #991b1b);
+}
+
+.settings-password__success {
+  border: 1px solid var(--lifelynk-border);
+  background: var(--lifelynk-green-light);
+  color: var(--lifelynk-green);
+}
+
+.settings-password__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.settings-action:disabled,
+.settings-password__close:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.settings-action--primary {
+  border-color: var(--lifelynk-blue);
+  background: var(--lifelynk-blue);
+  color: #ffffff;
+}
+
+.settings-action--primary:hover {
+  border-color: var(--lifelynk-blue);
+  background: var(--lifelynk-blue);
+  color: #ffffff;
+}
+
+/* =========================================================
+   SETTINGS ERROR
+   ========================================================= */
+
+.settings-notice--error {
+  margin: 0 0 20px;
+  border-color: var(--lifelynk-error-border, #fecaca);
+  background: var(--lifelynk-error-bg, #fef2f2);
+  color: var(--lifelynk-error-text, #991b1b);
+}
+
+/* =========================================================
+   APPEARANCE SELECT
+   ========================================================= */
+
+.settings-value--select {
+  width: 108px;
+  min-width: 108px;
+  height: 36px;
+  flex: 0 0 108px;
+  padding: 0 30px 0 11px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 9px;
+  background-color: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-secondary);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent 50%,
+      var(--lifelynk-text-muted) 50%
+    ),
+    linear-gradient(
+      135deg,
+      var(--lifelynk-text-muted) 50%,
+      transparent 50%
+    );
+  background-position:
+    calc(100% - 13px) 15px,
+    calc(100% - 9px) 15px;
+  background-size:
+    4px 4px,
+    4px 4px;
+  background-repeat: no-repeat;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.settings-value--select:hover {
+  border-color: var(--lifelynk-border-dark);
+  background-color: var(--lifelynk-surface);
+}
+
+.settings-value--select:focus {
+  border-color: var(--lifelynk-blue);
+  background-color: var(--lifelynk-surface);
+  box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+}
+
+.settings-value--select:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.settings-value--select option {
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .settings-page {
+    padding: 28px 24px 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .settings-page {
+    padding: 22px 16px 40px;
+  }
+
+  .settings-page__header {
+    margin-bottom: 20px;
+  }
+
+  .settings-page__header h2 {
+    font-size: 25px;
+  }
+
+  .settings-page__description {
+    font-size: 13px;
+  }
+
+  .settings-card__header {
+    padding: 18px;
+  }
+
+  .settings-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 17px 18px;
+  }
+
+  .settings-row__content {
+    flex: 1 1 calc(100% - 55px);
+  }
+
+  .settings-toggle,
+  .settings-value,
+  .settings-version,
+  .settings-action {
+    margin-left: 53px;
+  }
+
+  .settings-about {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .settings-password {
+    margin-left: 18px;
+    margin-right: 18px;
+    padding: 16px;
+  }
+
+  .settings-password__fields {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-password__actions {
+    flex-direction: column-reverse;
+  }
+
+  .settings-password__actions .settings-action {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .settings-card__header {
+    align-items: flex-start;
+  }
+
+  .settings-card__icon {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+
+  .settings-row__icon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .settings-row__content {
+    flex-basis: calc(100% - 49px);
+  }
+
+  .settings-toggle,
+  .settings-value,
+  .settings-version,
+  .settings-action {
+    margin-left: 49px;
+  }
+}
+

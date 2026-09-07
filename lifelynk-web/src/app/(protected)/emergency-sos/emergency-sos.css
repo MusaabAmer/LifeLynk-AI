@@ -1,0 +1,1219 @@
+/* =========================================================
+   LIFELYNK AI — EMERGENCY SOS
+   Page-specific styles
+   ========================================================= */
+
+.emergency-sos-page {
+  width: 100%;
+  max-width: 1500px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 30px 34px 48px;
+  background: var(--lifelynk-bg);
+  color: var(--lifelynk-text);
+}
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.emergency-sos-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.emergency-sos-heading {
+  min-width: 0;
+}
+
+.emergency-sos-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--lifelynk-red);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+}
+
+.emergency-sos-header h1 {
+  margin: 0;
+  color: var(--lifelynk-text);
+  font-size: 31px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.emergency-sos-header p {
+  margin: 9px 0 0;
+  color: var(--lifelynk-text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.emergency-sos-role {
+  display: flex;
+  min-width: 145px;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 15px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 12px;
+  background: var(--lifelynk-surface);
+  box-shadow: var(--lifelynk-shadow-sm);
+}
+
+.emergency-sos-role span {
+  color: var(--lifelynk-text-muted);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.emergency-sos-role strong {
+  color: var(--lifelynk-text);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.sos-alert {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 18px;
+  padding: 13px 15px;
+  border-radius: 11px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.sos-alert strong {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sos-alert span {
+  font-size: 11px;
+}
+
+.sos-alert-error {
+  border: 1px solid var(--lifelynk-error-border, #fecaca);
+  background: var(--lifelynk-error-bg, #fef2f2);
+  color: var(--lifelynk-error-text, #991b1b);
+}
+
+.sos-alert-success {
+  display: flex;
+  min-height: 45px;
+  align-items: center;
+  border: 1px solid #bbf7d0;
+  background: var(--lifelynk-green-light, #ecfdf3);
+  color: var(--lifelynk-green, #15803d);
+}
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+.emergency-sos-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.sos-stat-card {
+  position: relative;
+  min-height: 135px;
+  overflow: hidden;
+  padding: 19px 19px 17px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 14px;
+  background: var(--lifelynk-surface);
+  box-shadow: var(--lifelynk-shadow-sm);
+}
+
+.sos-stat-card::after {
+  position: absolute;
+  right: -28px;
+  bottom: -28px;
+  width: 85px;
+  height: 85px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 50%;
+  content: "";
+  opacity: 0.45;
+}
+
+.sos-stat-label {
+  display: block;
+  margin-bottom: 11px;
+  color: var(--lifelynk-text-secondary);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.sos-stat-value {
+  display: block;
+  color: var(--lifelynk-text);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.sos-stat-description {
+  display: block;
+  margin-top: 12px;
+  color: var(--lifelynk-text-muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.sos-stat-total {
+  border-top: 3px solid var(--lifelynk-text);
+}
+
+.sos-stat-active {
+  border-top: 3px solid var(--lifelynk-red);
+}
+
+.sos-stat-pending {
+  border-top: 3px solid var(--lifelynk-orange);
+}
+
+.sos-stat-critical {
+  border-top: 3px solid #991b1b;
+}
+
+.sos-stat-completed {
+  border-top: 3px solid var(--lifelynk-green);
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.emergency-sos-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 15px;
+}
+
+.sos-search-wrapper {
+  position: relative;
+  display: flex;
+  width: min(500px, 100%);
+  height: 43px;
+  align-items: center;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 10px;
+  background: var(--lifelynk-surface);
+  box-shadow: var(--lifelynk-shadow-sm);
+}
+
+.sos-search-wrapper:focus-within {
+  border-color: var(--lifelynk-red);
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--lifelynk-red) 10%,
+      transparent
+    );
+}
+
+.sos-search-icon {
+  display: grid;
+  width: 39px;
+  height: 100%;
+  flex: 0 0 39px;
+  place-items: center;
+  color: var(--lifelynk-text-muted);
+  font-size: 21px;
+}
+
+.sos-search-input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0 8px 0 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--lifelynk-text);
+  font: inherit;
+  font-size: 12px;
+}
+
+.sos-search-input::placeholder {
+  color: var(--lifelynk-text-muted);
+}
+
+.sos-search-clear {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+  flex: 0 0 32px;
+  place-items: center;
+  border: 0;
+  border-radius: 7px;
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-secondary);
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.sos-search-clear:hover {
+  background: var(--lifelynk-border);
+}
+
+.sos-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.sos-filter {
+  height: 37px;
+  padding: 0 13px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 9px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text-secondary);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 750;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.sos-filter:hover {
+  border-color: var(--lifelynk-border-dark);
+  transform: translateY(-1px);
+}
+
+.sos-filter.active {
+  border-color: var(--lifelynk-text);
+  background: var(--lifelynk-text);
+  color: var(--lifelynk-bg);
+}
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.emergency-sos-table-card {
+  overflow: hidden;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 15px;
+  background: var(--lifelynk-surface);
+  box-shadow: var(--lifelynk-shadow-sm);
+}
+
+.emergency-sos-table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 19px 21px;
+  border-bottom: 1px solid var(--lifelynk-border);
+}
+
+.sos-section-eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--lifelynk-red);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.emergency-sos-table-header h2 {
+  margin: 0;
+  color: var(--lifelynk-text);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.emergency-sos-table-header p {
+  margin: 5px 0 0;
+  color: var(--lifelynk-text-muted);
+  font-size: 11px;
+}
+
+.sos-request-count {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 8px 12px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 8px;
+  background: var(--lifelynk-surface-soft);
+}
+
+.sos-request-count strong {
+  color: var(--lifelynk-text);
+  font-size: 15px;
+}
+
+.sos-request-count span {
+  color: var(--lifelynk-text-muted);
+  font-size: 10px;
+}
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.emergency-sos-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.emergency-sos-table {
+  width: 100%;
+  min-width: 1120px;
+  border-collapse: collapse;
+}
+
+.emergency-sos-table th {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--lifelynk-border);
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.emergency-sos-table td {
+  padding: 14px 15px;
+  border-bottom: 1px solid var(--lifelynk-border);
+  color: var(--lifelynk-text-secondary);
+  font-size: 11px;
+  vertical-align: middle;
+}
+
+.emergency-sos-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.emergency-sos-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.emergency-sos-table tbody tr:hover {
+  background: var(--lifelynk-surface-soft);
+}
+
+/* =========================================================
+   REQUEST CELL
+   ========================================================= */
+
+.sos-request-cell {
+  display: flex;
+  min-width: 145px;
+  align-items: center;
+  gap: 10px;
+}
+
+.sos-request-icon {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 35px;
+  place-items: center;
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--lifelynk-red) 20%,
+      transparent
+    );
+  border-radius: 9px;
+  background: var(--lifelynk-red-light);
+  color: var(--lifelynk-red);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.sos-request-meta,
+.sos-patient-cell {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sos-request-meta strong,
+.sos-patient-cell strong {
+  overflow: hidden;
+  color: var(--lifelynk-text);
+  font-size: 11px;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sos-request-meta span,
+.sos-patient-cell span {
+  overflow: hidden;
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sos-request-meta span {
+  max-width: 125px;
+  font-family: monospace;
+}
+
+/* =========================================================
+   BLOOD
+   ========================================================= */
+
+.sos-blood-cell {
+  display: flex;
+  min-width: 60px;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sos-blood-cell strong {
+  color: var(--lifelynk-red);
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.sos-blood-cell span {
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+}
+
+.sos-units {
+  display: inline-flex;
+  min-width: 31px;
+  height: 27px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 7px;
+  border-radius: 7px;
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.sos-urgency,
+.sos-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 25px;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.sos-badge-dot {
+  width: 5px;
+  height: 5px;
+  flex: 0 0 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.sos-urgency-critical,
+.sos-status.active {
+  background: var(--lifelynk-red-light);
+  color: var(--lifelynk-red);
+}
+
+.sos-urgency-urgent,
+.sos-status.pending {
+  background: var(--lifelynk-orange-light);
+  color: var(--lifelynk-orange);
+}
+
+.sos-urgency-normal {
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-secondary);
+}
+
+.sos-status.resolved {
+  background: var(--lifelynk-green-light);
+  color: var(--lifelynk-green);
+}
+
+.sos-status.cancelled {
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-secondary);
+}
+
+/* =========================================================
+   LOCATION / CREATED
+   ========================================================= */
+
+.sos-location-cell {
+  display: block;
+  max-width: 145px;
+  overflow: hidden;
+  color: var(--lifelynk-text-secondary);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sos-created {
+  color: var(--lifelynk-text-muted);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   VIEW BUTTON
+   ========================================================= */
+
+.sos-view-button {
+  height: 32px;
+  padding: 0 11px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 7px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text-secondary);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 750;
+  white-space: nowrap;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.sos-view-button:hover {
+  border-color: var(--lifelynk-text);
+  background: var(--lifelynk-text);
+  color: var(--lifelynk-bg);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.sos-empty-state {
+  display: flex;
+  min-height: 320px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 55px 20px;
+  text-align: center;
+}
+
+.sos-empty-icon {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
+  place-items: center;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 14px;
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-muted);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.sos-empty-state h3 {
+  margin: 0;
+  color: var(--lifelynk-text);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.sos-empty-state p {
+  max-width: 390px;
+  margin: 7px auto 0;
+  color: var(--lifelynk-text-muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.sos-empty-reset {
+  height: 34px;
+  margin-top: 16px;
+  padding: 0 13px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 8px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text-secondary);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.sos-empty-reset:hover {
+  border-color: var(--lifelynk-text);
+  background: var(--lifelynk-text);
+  color: var(--lifelynk-bg);
+}
+
+/* =========================================================
+   MODAL BACKDROP
+   ========================================================= */
+
+.sos-modal-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  overflow-y: auto;
+  padding: 25px;
+  place-items: center;
+  background: rgba(15, 23, 42, 0.56);
+  backdrop-filter: blur(3px);
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.sos-modal {
+  width: min(720px, 100%);
+  max-height: calc(100vh - 50px);
+  overflow: auto;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 17px;
+  background: var(--lifelynk-surface);
+  box-shadow: var(--lifelynk-shadow-lg);
+}
+
+.sos-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px 17px;
+  border-bottom: 1px solid var(--lifelynk-border);
+}
+
+.sos-modal-eyebrow {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--lifelynk-red);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+.sos-modal-header h2 {
+  margin: 0;
+  color: var(--lifelynk-text);
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.sos-modal-header p {
+  max-width: 450px;
+  margin: 6px 0 0;
+  overflow: hidden;
+  color: var(--lifelynk-text-muted);
+  font-family: monospace;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sos-modal-close {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 9px;
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-secondary);
+  cursor: pointer;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.sos-modal-close:hover:not(:disabled) {
+  border-color: var(--lifelynk-border-dark);
+  background: var(--lifelynk-border);
+}
+
+.sos-modal-close:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* =========================================================
+   MODAL BODY
+   ========================================================= */
+
+.sos-modal-body {
+  padding-bottom: 4px;
+}
+
+.sos-detail-status-row {
+  display: flex;
+  gap: 8px;
+  padding: 17px 24px 4px;
+}
+
+.sos-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 17px 24px 0;
+  overflow: hidden;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 11px;
+  background: var(--lifelynk-border);
+}
+
+.sos-detail-item {
+  display: flex;
+  min-height: 70px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 14px;
+  background: var(--lifelynk-surface);
+}
+
+.sos-detail-item span,
+.sos-detail-description > span,
+.sos-coordinates span,
+.sos-section-heading span {
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sos-detail-item strong {
+  overflow: hidden;
+  color: var(--lifelynk-text);
+  font-size: 11px;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.sos-detail-description {
+  margin: 17px 24px 0;
+  padding: 14px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 10px;
+  background: var(--lifelynk-surface-soft);
+}
+
+.sos-detail-description p {
+  margin: 6px 0 0;
+  color: var(--lifelynk-text-secondary);
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   GPS LOCATION
+   ========================================================= */
+
+.sos-location-details {
+  margin: 17px 24px 0;
+  padding: 15px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 11px;
+}
+
+.sos-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sos-section-heading h3 {
+  margin: 4px 0 0;
+  color: var(--lifelynk-text);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sos-coordinates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.sos-coordinates > div {
+  display: flex;
+  min-height: 58px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 11px;
+  border-radius: 8px;
+  background: var(--lifelynk-surface-soft);
+}
+
+.sos-coordinates strong {
+  color: var(--lifelynk-text-secondary);
+  font-family: monospace;
+  font-size: 10px;
+}
+
+.sos-map-link {
+  display: inline-flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border-radius: 8px;
+  background: var(--lifelynk-text);
+  color: var(--lifelynk-bg);
+  font-size: 10px;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.sos-map-link:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.sos-no-location {
+  margin: 11px 0 0;
+  color: var(--lifelynk-text-muted);
+  font-size: 10px;
+}
+
+/* =========================================================
+   MODAL FOOTER
+   ========================================================= */
+
+.sos-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 20px 24px;
+}
+
+.sos-action-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: auto;
+  flex-wrap: wrap;
+}
+
+.sos-action-button {
+  min-height: 37px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.sos-action-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.sos-action-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.sos-action-activate {
+  border-color: var(--lifelynk-red);
+  background: var(--lifelynk-red);
+  color: #ffffff;
+}
+
+.sos-action-activate:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.sos-action-resolve {
+  border-color: #2e7d32;
+  background: #2e7d32;
+  color: #ffffff;
+}
+
+.sos-action-resolve:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.sos-action-cancel {
+  border-color: var(--lifelynk-border);
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text-secondary);
+}
+
+.sos-action-cancel:hover:not(:disabled) {
+  border-color: var(--lifelynk-border-dark);
+  background: var(--lifelynk-surface-soft);
+}
+
+.sos-action-complete {
+  margin-right: auto;
+  color: var(--lifelynk-text-muted);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.sos-modal-secondary-button {
+  height: 37px;
+  padding: 0 14px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 8px;
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text-secondary);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.sos-modal-secondary-button:hover:not(:disabled) {
+  border-color: var(--lifelynk-border-dark);
+  background: var(--lifelynk-surface-soft);
+}
+
+.sos-modal-secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .emergency-sos-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .emergency-sos-page {
+    padding: 24px;
+  }
+
+  .emergency-sos-header,
+  .emergency-sos-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .emergency-sos-role {
+    width: 100%;
+  }
+
+  .sos-search-wrapper {
+    width: 100%;
+  }
+
+  .sos-filter-group {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .emergency-sos-page {
+    padding: 18px;
+  }
+
+  .emergency-sos-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .emergency-sos-table-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sos-request-count {
+    align-self: flex-start;
+  }
+
+  .sos-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sos-coordinates {
+    grid-template-columns: 1fr;
+  }
+
+  .sos-modal-backdrop {
+    padding: 10px;
+  }
+
+  .sos-modal {
+    max-height: calc(100vh - 20px);
+  }
+
+  .sos-modal-header {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .sos-detail-status-row {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .sos-detail-grid,
+  .sos-detail-description,
+  .sos-location-details {
+    margin-left: 17px;
+    margin-right: 17px;
+  }
+
+  .sos-modal-footer {
+    align-items: stretch;
+    padding-left: 17px;
+    padding-right: 17px;
+    flex-direction: column;
+  }
+
+  .sos-action-group {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .sos-action-complete {
+    margin-right: 0;
+  }
+
+  .sos-modal-secondary-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 460px) {
+  .emergency-sos-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .emergency-sos-header h1 {
+    font-size: 27px;
+  }
+
+  .sos-filter-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sos-filter {
+    width: 100%;
+  }
+
+  .sos-action-group {
+    flex-direction: column;
+  }
+
+  .sos-action-button {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   OPENSTREETMAP
+   ========================================================= */
+
+.emergency-map-container {
+  width: 100%;
+  height: 430px;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--lifelynk-border, #e5e7eb);
+  background: #f3f4f6;
+}
+
+.emergency-map {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.lifelynk-sos-marker-wrapper {
+  background: transparent;
+  border: 0;
+}
+
+.lifelynk-sos-marker {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #c62828;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  border: 3px solid #ffffff;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    0 0 0 5px rgba(198, 40, 40, 0.18);
+}
+
+.emergency-map .leaflet-control-attribution {
+  font-size: 10px;
+}
+
+.emergency-sos-map-card {
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid var(--lifelynk-border, #e5e7eb);
+  border-radius: 20px;
+  background: var(--lifelynk-card, #ffffff);
+}

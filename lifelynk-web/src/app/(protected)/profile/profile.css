@@ -1,0 +1,982 @@
+/* =========================================================
+   LIFELYNK AI — PROFILE
+   Organization-aware account profile
+   ========================================================= */
+
+.profile-page {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 36px 60px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.profile-header__icon {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: color-mix(
+    in srgb,
+    var(--lifelynk-red) 10%,
+    transparent
+  );
+  color: var(--lifelynk-red);
+}
+
+.profile-header__icon svg {
+  width: 27px;
+  height: 27px;
+}
+
+.profile-header__content {
+  min-width: 0;
+  flex: 1;
+}
+
+.profile-eyebrow {
+  margin: 0 0 6px;
+  color: var(--lifelynk-red);
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.profile-header h1 {
+  margin: 0;
+  color: var(--lifelynk-text);
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.profile-header p:last-child {
+  margin: 8px 0 0;
+  color: var(--lifelynk-muted);
+  font-size: 14px;
+}
+
+.profile-header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  flex: 0 0 auto;
+}
+
+/* =========================================================
+   HEADER BUTTONS
+   ========================================================= */
+
+.profile-edit-button,
+.profile-save-button,
+.profile-header__actions .profile-cancel-button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 15px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.profile-edit-button {
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--lifelynk-red) 42%,
+      var(--lifelynk-border)
+    );
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-red);
+}
+
+.profile-edit-button:hover {
+  background: color-mix(
+    in srgb,
+    var(--lifelynk-red) 7%,
+    transparent
+  );
+  border-color: var(--lifelynk-red);
+}
+
+.profile-save-button {
+  border: 1px solid var(--lifelynk-red);
+  background: var(--lifelynk-red);
+  color: #fff;
+}
+
+.profile-save-button:hover:not(:disabled) {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+  box-shadow:
+    0 5px 14px
+      color-mix(
+        in srgb,
+        var(--lifelynk-red) 20%,
+        transparent
+      );
+}
+
+.profile-header__actions
+  .profile-cancel-button {
+  border: 1px solid var(--lifelynk-border);
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text);
+}
+
+.profile-header__actions
+  .profile-cancel-button:hover:not(:disabled) {
+  background: var(--lifelynk-surface-soft);
+}
+
+.profile-edit-button:disabled,
+.profile-save-button:disabled,
+.profile-header__actions
+  .profile-cancel-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================================================
+   SAVE FEEDBACK
+   ========================================================= */
+
+.profile-success {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  padding: 13px 15px;
+  border: 1px solid
+    color-mix(
+      in srgb,
+      #18864b 28%,
+      var(--lifelynk-border)
+    );
+  border-radius: 11px;
+  background: color-mix(
+    in srgb,
+    #18864b 7%,
+    transparent
+  );
+  color: #18864b;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.profile-success svg {
+  flex: 0 0 auto;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.profile-card,
+.profile-section {
+  border: 1px solid var(--lifelynk-border);
+  background: var(--lifelynk-surface);
+  border-radius: 18px;
+  box-shadow: var(--lifelynk-shadow);
+}
+
+.profile-card {
+  margin-bottom: 22px;
+}
+
+.profile-section {
+  margin-bottom: 22px;
+  padding: 26px;
+}
+
+/* =========================================================
+   IDENTITY
+   ========================================================= */
+
+.profile-identity {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+}
+
+.profile-avatar {
+  width: 74px;
+  height: 74px;
+  flex: 0 0 74px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: var(--lifelynk-navy);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.profile-identity__content {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile-identity h2 {
+  margin: 0;
+  color: var(--lifelynk-text);
+  font-size: 22px;
+}
+
+.profile-identity__content
+  > div
+  > p:last-child {
+  margin: 6px 0 0;
+  color: var(--lifelynk-muted);
+  font-size: 13px;
+}
+
+.profile-identity__organization {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+  padding: 13px 15px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 13px;
+}
+
+.profile-identity__organization svg {
+  color: var(--lifelynk-red);
+  flex: 0 0 auto;
+}
+
+.profile-identity__organization div {
+  min-width: 0;
+}
+
+.profile-identity__organization strong,
+.profile-identity__organization span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-identity__organization strong {
+  color: var(--lifelynk-text);
+  font-size: 13px;
+}
+
+.profile-identity__organization span {
+  margin-top: 3px;
+  color: var(--lifelynk-muted);
+  font-size: 11px;
+}
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.profile-section__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.profile-section__heading h2 {
+  margin: 0;
+  color: var(--lifelynk-text);
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.profile-section__heading > svg {
+  width: 22px;
+  height: 22px;
+  color: var(--lifelynk-red);
+  flex: 0 0 auto;
+}
+
+/* =========================================================
+   READ-ONLY INFO GRID
+   ========================================================= */
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    minmax(0, 1fr)
+  );
+  gap: 12px;
+}
+
+.profile-info-item {
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 13px;
+  background: var(--lifelynk-surface-soft);
+}
+
+.profile-info-item__icon {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: color-mix(
+    in srgb,
+    var(--lifelynk-red) 9%,
+    transparent
+  );
+  color: var(--lifelynk-red);
+}
+
+.profile-info-item > div {
+  min-width: 0;
+}
+
+.profile-info-item__label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--lifelynk-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+}
+
+.profile-info-item__value {
+  display: block;
+  overflow-wrap: anywhere;
+  color: var(--lifelynk-text);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* =========================================================
+   EDIT GRID
+   ========================================================= */
+
+.profile-edit-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    2,
+    minmax(0, 1fr)
+  );
+  gap: 15px;
+}
+
+/* =========================================================
+   EDIT FIELD
+   ========================================================= */
+
+.profile-edit-field {
+  min-width: 0;
+  display: block;
+}
+
+.profile-edit-field__label {
+  display: block;
+  margin: 0 0 7px;
+  color: var(--lifelynk-text);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.profile-edit-field__control {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 13px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 11px;
+  background: var(--lifelynk-surface);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.profile-edit-field__control:focus-within {
+  border-color: var(--lifelynk-red);
+  background: var(--lifelynk-surface);
+  box-shadow:
+    0 0 0 3px
+      color-mix(
+        in srgb,
+        var(--lifelynk-red) 10%,
+        transparent
+      );
+}
+
+.profile-edit-field__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lifelynk-muted);
+  flex: 0 0 auto;
+}
+
+.profile-edit-field__control
+  input {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--lifelynk-text);
+  font: inherit;
+  font-size: 13px;
+}
+
+.profile-edit-field__control
+  input::placeholder {
+  color: var(--lifelynk-muted);
+  opacity: 0.7;
+}
+
+.profile-edit-field__control
+  input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Remove number input arrows where supported */
+
+.profile-edit-field__control
+  input[type="number"]::-webkit-inner-spin-button,
+.profile-edit-field__control
+  input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+}
+
+/* =========================================================
+   EDIT TOGGLES
+   ========================================================= */
+
+.profile-toggle-field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 74px;
+  padding: 12px 14px;
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 12px;
+  background: var(--lifelynk-surface-soft);
+}
+
+.profile-toggle-field
+  .profile-edit-field__label {
+  margin-bottom: 8px;
+}
+
+.profile-toggle {
+  width: 100%;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--lifelynk-muted);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.profile-toggle__track {
+  position: relative;
+  width: 42px;
+  height: 24px;
+  flex: 0 0 42px;
+  display: block;
+  border-radius: 999px;
+  background: var(--lifelynk-border);
+  transition: background 160ms ease;
+}
+
+.profile-toggle__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  transition: transform 160ms ease;
+}
+
+.profile-toggle strong {
+  color: var(--lifelynk-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.profile-toggle--active
+  .profile-toggle__track {
+  background: var(--lifelynk-red);
+}
+
+.profile-toggle--active
+  .profile-toggle__thumb {
+  transform: translateX(18px);
+}
+
+.profile-toggle--active strong {
+  color: var(--lifelynk-red);
+}
+
+.profile-toggle:focus-visible
+  .profile-toggle__track {
+  outline: 3px solid
+    color-mix(
+      in srgb,
+      var(--lifelynk-red) 14%,
+      transparent
+    );
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.profile-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.profile-status--verified {
+  color: #18864b;
+}
+
+.profile-status--pending {
+  color: #a66a00;
+}
+
+.profile-status--rejected {
+  color: #c62828;
+}
+
+.profile-boolean {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.profile-boolean--yes {
+  color: #18864b;
+  background: color-mix(
+    in srgb,
+    #18864b 10%,
+    transparent
+  );
+}
+
+.profile-boolean--no {
+  color: var(--lifelynk-muted);
+  background: color-mix(
+    in srgb,
+    var(--lifelynk-muted) 9%,
+    transparent
+  );
+}
+
+/* =========================================================
+   VERIFICATION NOTE
+   ========================================================= */
+
+.profile-note {
+  margin-top: 14px;
+  padding: 15px 16px;
+  border-left: 3px solid var(--lifelynk-red);
+  border-radius: 8px;
+  background: var(--lifelynk-surface-soft);
+}
+
+.profile-note strong {
+  color: var(--lifelynk-text);
+  font-size: 12px;
+}
+
+.profile-note p {
+  margin: 6px 0 0;
+  color: var(--lifelynk-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   DANGER ZONE
+   ========================================================= */
+
+.profile-danger {
+  border-color: color-mix(
+    in srgb,
+    var(--lifelynk-red) 28%,
+    var(--lifelynk-border)
+  );
+}
+
+.profile-danger
+  .profile-section__heading
+  > svg {
+  color: var(--lifelynk-red);
+}
+
+.profile-danger__description {
+  max-width: 800px;
+  margin: 0 0 18px;
+  color: var(--lifelynk-muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.profile-delete-button,
+.profile-confirm-delete-button,
+.profile-cancel-button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 10px;
+  padding: 0 15px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.profile-delete-button {
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--lifelynk-red) 45%,
+      var(--lifelynk-border)
+    );
+  background: transparent;
+  color: var(--lifelynk-red);
+}
+
+.profile-delete-button:hover {
+  background: color-mix(
+    in srgb,
+    var(--lifelynk-red) 8%,
+    transparent
+  );
+}
+
+.profile-delete-confirm {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 17px;
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--lifelynk-red) 25%,
+      var(--lifelynk-border)
+    );
+  border-radius: 13px;
+  background: color-mix(
+    in srgb,
+    var(--lifelynk-red) 4%,
+    transparent
+  );
+}
+
+.profile-delete-confirm strong {
+  color: var(--lifelynk-text);
+  font-size: 14px;
+}
+
+.profile-delete-confirm p {
+  margin: 5px 0 0;
+  color: var(--lifelynk-muted);
+  font-size: 12px;
+}
+
+.profile-delete-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+}
+
+.profile-cancel-button {
+  border: 1px solid var(--lifelynk-border);
+  background: var(--lifelynk-surface);
+  color: var(--lifelynk-text);
+}
+
+.profile-cancel-button:hover:not(:disabled) {
+  background: var(--lifelynk-surface-soft);
+}
+
+.profile-confirm-delete-button {
+  border: 1px solid var(--lifelynk-red);
+  background: var(--lifelynk-red);
+  color: #fff;
+}
+
+.profile-confirm-delete-button:hover:not(:disabled) {
+  filter: brightness(0.96);
+}
+
+.profile-confirm-delete-button:disabled,
+.profile-cancel-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* =========================================================
+   ERRORS
+   ========================================================= */
+
+.profile-error {
+  margin-bottom: 15px;
+  padding: 12px 14px;
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--lifelynk-red) 30%,
+      var(--lifelynk-border)
+    );
+  border-radius: 10px;
+  background: color-mix(
+    in srgb,
+    var(--lifelynk-red) 7%,
+    transparent
+  );
+  color: var(--lifelynk-red);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   SPINNERS
+   ========================================================= */
+
+.profile-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: profile-spin 0.7s linear infinite;
+}
+
+.profile-button-spinner {
+  animation: profile-spin 0.7s linear infinite;
+}
+
+@keyframes profile-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .profile-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .profile-header__content {
+    min-width: 240px;
+  }
+
+  .profile-header__actions {
+    width: 100%;
+    justify-content: flex-end;
+    padding-left: 72px;
+  }
+
+  .profile-edit-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .profile-page {
+    padding: 24px 20px 45px;
+  }
+
+  .profile-identity {
+    align-items: flex-start;
+  }
+
+  .profile-identity__content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profile-identity__organization {
+    min-width: 0;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-delete-confirm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profile-delete-actions {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 520px) {
+  .profile-page {
+    padding: 20px 14px 35px;
+  }
+
+  .profile-header {
+    gap: 13px;
+  }
+
+  .profile-header__icon {
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+    border-radius: 13px;
+  }
+
+  .profile-header__icon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .profile-header__content {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .profile-header h1 {
+    font-size: 27px;
+  }
+
+  .profile-header__actions {
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .profile-header__actions
+    .profile-edit-button,
+  .profile-header__actions
+    .profile-cancel-button,
+  .profile-header__actions
+    .profile-save-button {
+    width: 100%;
+  }
+
+  .profile-section {
+    padding: 19px;
+    border-radius: 15px;
+  }
+
+  .profile-identity {
+    padding: 19px;
+    gap: 14px;
+  }
+
+  .profile-avatar {
+    width: 58px;
+    height: 58px;
+    flex-basis: 58px;
+    border-radius: 17px;
+    font-size: 19px;
+  }
+
+  .profile-edit-grid {
+    gap: 12px;
+  }
+
+  .profile-delete-actions {
+    width: 100%;
+  }
+
+  .profile-delete-actions
+    .profile-cancel-button,
+  .profile-delete-actions
+    .profile-confirm-delete-button {
+    flex: 1;
+  }
+}
+
+@media (max-width: 380px) {
+  .profile-header__actions {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-delete-actions {
+    flex-direction: column;
+  }
+
+  .profile-delete-actions
+    .profile-cancel-button,
+  .profile-delete-actions
+    .profile-confirm-delete-button {
+    width: 100%;
+  }
+}

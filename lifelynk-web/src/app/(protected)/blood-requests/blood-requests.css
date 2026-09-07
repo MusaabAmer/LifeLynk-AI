@@ -1,0 +1,1876 @@
+/* =========================================================
+   LIFELYNK AI — BLOOD REQUESTS PAGE
+   Page-specific styles
+   ========================================================= */
+
+/* =========================================================
+   PAGE WRAPPER
+   ========================================================= */
+
+.blood-requests-page {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px 36px 48px;
+
+  color: var(--lifelynk-text);
+}
+
+/* =========================================================
+   STAGGERED FADE-IN
+   ========================================================= */
+
+.blood-requests-fade-in {
+  animation:
+    blood-requests-fade-up 0.45s ease-out both;
+}
+
+.blood-requests-fade-in--1 { animation-delay: 0s; }
+.blood-requests-fade-in--2 { animation-delay: 0.06s; }
+.blood-requests-fade-in--3 { animation-delay: 0.12s; }
+.blood-requests-fade-in--4 { animation-delay: 0.18s; }
+
+@keyframes blood-requests-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.blood-requests-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 28px 32px;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--lifelynk-surface) 0%,
+      var(--lifelynk-surface-soft) 100%
+    );
+
+  box-shadow: var(--lifelynk-shadow);
+}
+
+.blood-requests-header__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+
+  min-width: 0;
+}
+
+.blood-requests-header__icon {
+  flex: 0 0 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 14px;
+
+  background: var(--lifelynk-red-light);
+  color: var(--lifelynk-red);
+}
+
+.blood-requests-header__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.blood-requests-header__titles {
+  min-width: 0;
+}
+
+.blood-requests-header__eyebrow {
+  margin: 0 0 6px;
+
+  color: var(--lifelynk-red);
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.blood-requests-header__title {
+  margin: 0;
+
+  color: var(--lifelynk-navy);
+
+  font-size: clamp(22px, 2.5vw, 30px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.blood-requests-header__description {
+  max-width: 620px;
+  margin: 10px 0 0;
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   ADD BUTTON (header action)
+   ========================================================= */
+
+.blood-requests-add-button {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 44px;
+  padding: 0 18px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: var(--lifelynk-red);
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow:
+    0 5px 14px rgba(198, 40, 40, 0.18);
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.blood-requests-add-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  background: var(--lifelynk-red-dark);
+
+  box-shadow:
+    0 8px 18px rgba(198, 40, 40, 0.22);
+}
+
+.blood-requests-add-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.blood-requests-add-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* =========================================================
+   SUMMARY STATS
+   ========================================================= */
+
+.blood-requests-stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  margin-top: 24px;
+}
+
+.blood-requests-stat {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  min-width: 0;
+  min-height: 115px;
+
+  padding: 22px;
+
+  overflow: hidden;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: var(--lifelynk-radius-lg);
+
+  background: var(--lifelynk-surface);
+
+  box-shadow: var(--lifelynk-shadow-sm);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.blood-requests-stat:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--lifelynk-border-dark);
+
+  box-shadow: var(--lifelynk-shadow);
+}
+
+.blood-requests-stat__icon {
+  flex: 0 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 13px;
+
+  color: var(--lifelynk-text-muted);
+}
+
+.blood-requests-stat__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.blood-requests-stat:nth-child(1) .blood-requests-stat__icon {
+  background: var(--lifelynk-red-light);
+  color: var(--lifelynk-red);
+}
+
+.blood-requests-stat:nth-child(2) .blood-requests-stat__icon {
+  background: #edf6ff;
+  color: var(--lifelynk-blue);
+}
+
+.blood-requests-stat:nth-child(3) .blood-requests-stat__icon {
+  background: var(--lifelynk-orange-light);
+  color: var(--lifelynk-orange);
+}
+
+.blood-requests-stat:nth-child(4) .blood-requests-stat__icon {
+  background: var(--lifelynk-green-light);
+  color: var(--lifelynk-green);
+}
+
+.blood-requests-stat__content {
+  min-width: 0;
+}
+
+.blood-requests-stat__content p {
+  margin: 0 0 4px;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.blood-requests-stat__content strong {
+  display: block;
+
+  color: var(--lifelynk-text);
+
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.blood-requests-stat__label {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  padding: 5px 8px;
+
+  border-radius: 999px;
+
+  background: var(--lifelynk-surface-soft);
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   RECORDS SECTION
+   ========================================================= */
+
+.blood-requests-records {
+  margin-top: 24px;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: var(--lifelynk-radius-lg);
+
+  background: var(--lifelynk-surface);
+
+  box-shadow: var(--lifelynk-shadow-sm);
+
+  overflow: hidden;
+}
+
+.blood-requests-records__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 20px 24px;
+
+  border-bottom: 1px solid var(--lifelynk-border);
+}
+
+.blood-requests-records__header p {
+  margin: 0 0 4px;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.blood-requests-records__header h3 {
+  margin: 0;
+
+  color: var(--lifelynk-text);
+
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.blood-requests-records__count {
+  flex: 0 0 auto;
+
+  padding: 6px 10px;
+
+  border-radius: 999px;
+
+  background: var(--lifelynk-surface-soft);
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.blood-requests-filters {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+
+  padding: 16px 24px;
+
+  border-bottom: 1px solid var(--lifelynk-border);
+
+  background: var(--lifelynk-surface-soft);
+}
+
+.blood-requests-filters__field {
+  flex: 1;
+  min-width: 0;
+}
+
+.blood-requests-filters__field--search {
+  flex: 1.6;
+}
+
+.blood-requests-filters__field label {
+  display: block;
+
+  margin: 0 0 6px;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blood-requests-filters__field select,
+.blood-requests-filters__search-wrap input {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 12px;
+
+  border: 1px solid var(--lifelynk-border-dark);
+  border-radius: var(--lifelynk-radius-sm);
+
+  background: var(--lifelynk-surface);
+
+  color: var(--lifelynk-text);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.blood-requests-filters__field select {
+  cursor: pointer;
+}
+
+.blood-requests-filters__search-wrap {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.blood-requests-filters__search-wrap svg {
+  position: absolute;
+  left: 12px;
+
+  width: 15px;
+  height: 15px;
+
+  color: var(--lifelynk-text-muted);
+
+  pointer-events: none;
+}
+
+.blood-requests-filters__search-wrap input {
+  padding: 0 12px 0 36px;
+}
+
+.blood-requests-filters__clear {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  min-height: 38px;
+  padding: 0 14px;
+
+  border: 1px solid var(--lifelynk-border-dark);
+  border-radius: var(--lifelynk-radius-sm);
+
+  background: var(--lifelynk-surface);
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.blood-requests-filters__clear:hover:not(:disabled) {
+  border-color: var(--lifelynk-border-dark);
+
+  background: var(--lifelynk-red-light);
+  color: var(--lifelynk-red);
+}
+
+.blood-requests-filters__clear:disabled {
+  opacity: 0.5;
+}
+
+.blood-requests-filters__clear svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* =========================================================
+   DESKTOP TABLE
+   ========================================================= */
+
+.blood-requests-table-wrap {
+  overflow-x: auto;
+}
+
+.blood-requests-table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.blood-requests-table thead {
+  background: var(--lifelynk-surface-soft);
+
+  border-bottom: 1px solid var(--lifelynk-border);
+}
+
+.blood-requests-table th {
+  padding: 13px 16px;
+
+  text-align: left;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+.blood-requests-table td {
+  padding: 15px 16px;
+
+  border-bottom: 1px solid var(--lifelynk-border);
+
+  color: var(--lifelynk-text);
+
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.blood-requests-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.blood-requests-table tbody tr:hover {
+  background: var(--lifelynk-surface-soft);
+}
+
+.blood-requests-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.blood-requests-table__group,
+.blood-requests-table__org {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  min-width: 0;
+}
+
+.blood-requests-table__group strong,
+.blood-requests-table__org strong {
+  color: var(--lifelynk-text);
+
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.blood-requests-table__group span,
+.blood-requests-table__org span {
+  color: var(--lifelynk-text-muted);
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.blood-requests-table__notes {
+  max-width: 180px;
+
+  overflow: hidden;
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 12px;
+  font-weight: 500;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blood-requests-table__location {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+
+  font-size: 13px;
+}
+
+.blood-requests-table__location span:last-child {
+  color: var(--lifelynk-text-muted);
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.blood-requests-table__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* =========================================================
+   ROW ICON BUTTONS
+   ========================================================= */
+
+.blood-requests-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  padding: 0;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 9px;
+
+  background: var(--lifelynk-surface);
+
+  color: var(--lifelynk-text-secondary);
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.blood-requests-icon-button:hover {
+  transform: translateY(-1px);
+
+  border-color: var(--lifelynk-border-dark);
+
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-blue);
+}
+
+.blood-requests-icon-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.blood-requests-icon-button--danger:hover {
+  background: var(--lifelynk-red-light);
+  border-color: rgba(198, 40, 40, 0.2);
+  color: var(--lifelynk-red);
+}
+
+/* =========================================================
+   STATUS BADGES (free-text, pattern-matched colors)
+   ========================================================= */
+
+.blood-requests-status-badge {
+  display: inline-flex;
+  align-items: center;
+
+  max-width: 130px;
+
+  padding: 4px 9px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: var(--lifelynk-surface-soft);
+  border: 1px solid var(--lifelynk-border);
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blood-requests-status-badge--success {
+  background: var(--lifelynk-green-light);
+  border-color: transparent;
+  color: var(--lifelynk-green);
+}
+
+.blood-requests-status-badge--info {
+  background: #edf6ff;
+  border-color: transparent;
+  color: var(--lifelynk-blue);
+}
+
+.blood-requests-status-badge--warning {
+  background: var(--lifelynk-orange-light);
+  border-color: transparent;
+  color: var(--lifelynk-orange);
+}
+
+.blood-requests-status-badge--danger {
+  background: var(--lifelynk-red-light);
+  border-color: transparent;
+  color: var(--lifelynk-red);
+}
+
+/* =========================================================
+   URGENCY BADGES (free-text, pattern-matched colors)
+   ========================================================= */
+
+.blood-requests-urgency-badge {
+  display: inline-flex;
+  align-items: center;
+
+  max-width: 130px;
+
+  padding: 4px 9px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: var(--lifelynk-surface-soft);
+  border: 1px solid var(--lifelynk-border);
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.blood-requests-urgency-badge--success {
+  background: var(--lifelynk-green-light);
+  border-color: transparent;
+  color: var(--lifelynk-green);
+}
+
+.blood-requests-urgency-badge--info {
+  background: #edf6ff;
+  border-color: transparent;
+  color: var(--lifelynk-blue);
+}
+
+.blood-requests-urgency-badge--warning {
+  background: var(--lifelynk-orange-light);
+  border-color: transparent;
+  color: var(--lifelynk-orange);
+}
+
+.blood-requests-urgency-badge--danger {
+  background: var(--lifelynk-red-light);
+  border-color: transparent;
+  color: var(--lifelynk-red);
+}
+
+/* =========================================================
+   MOBILE CARDS
+   ========================================================= */
+
+.blood-requests-cards {
+  display: none;
+}
+
+.blood-requests-card {
+  padding: 18px;
+
+  border-bottom: 1px solid var(--lifelynk-border);
+
+  transition: background 0.15s ease;
+}
+
+.blood-requests-card:last-child {
+  border-bottom: 0;
+}
+
+.blood-requests-card:hover {
+  background: var(--lifelynk-surface-soft);
+}
+
+.blood-requests-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-bottom: 12px;
+}
+
+.blood-requests-card__group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+
+  min-width: 0;
+}
+
+.blood-requests-card__group strong {
+  color: var(--lifelynk-text);
+
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.blood-requests-card__group span {
+  color: var(--lifelynk-text-muted);
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.blood-requests-card__badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  flex-shrink: 0;
+}
+
+.blood-requests-card__org {
+  margin-bottom: 4px;
+
+  color: var(--lifelynk-text);
+
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.blood-requests-card__location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-bottom: 14px;
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.blood-requests-card__location svg {
+  flex: 0 0 14px;
+
+  width: 14px;
+  height: 14px;
+
+  color: var(--lifelynk-text-muted);
+}
+
+.blood-requests-card__grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.blood-requests-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  min-width: 0;
+}
+
+.blood-requests-card__field-label {
+  color: var(--lifelynk-text-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.blood-requests-card__field-value {
+  color: var(--lifelynk-text);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.blood-requests-card__actions {
+  display: flex;
+  gap: 10px;
+
+  margin-top: 14px;
+}
+
+.blood-requests-card__action {
+  flex: 1;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 38px;
+  padding: 0 12px;
+
+  border: 1px solid var(--lifelynk-border-dark);
+  border-radius: var(--lifelynk-radius-sm);
+
+  background: var(--lifelynk-surface);
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.blood-requests-card__action svg {
+  width: 14px;
+  height: 14px;
+}
+
+.blood-requests-card__action:hover {
+  background: var(--lifelynk-surface-soft);
+  border-color: var(--lifelynk-border-dark);
+  color: var(--lifelynk-blue);
+}
+
+.blood-requests-card__action--danger:hover {
+  background: var(--lifelynk-red-light);
+  border-color: rgba(198, 40, 40, 0.2);
+  color: var(--lifelynk-red);
+}
+
+/* =========================================================
+   EMPTY / FILTERED EMPTY / ERROR STATES
+   ========================================================= */
+
+.blood-requests-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 260px;
+
+  padding: 48px 24px;
+
+  text-align: center;
+}
+
+.blood-requests-empty__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+
+  margin-bottom: 18px;
+
+  border-radius: 16px;
+
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-muted);
+}
+
+.blood-requests-empty__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.blood-requests-empty strong {
+  color: var(--lifelynk-text);
+
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.blood-requests-empty p {
+  max-width: 380px;
+  margin: 8px 0 0;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.blood-requests-filtered-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 200px;
+
+  padding: 40px 24px;
+
+  text-align: center;
+}
+
+.blood-requests-filtered-empty__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  margin-bottom: 14px;
+
+  border-radius: 14px;
+
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text-muted);
+}
+
+.blood-requests-filtered-empty__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.blood-requests-filtered-empty strong {
+  color: var(--lifelynk-text);
+
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.blood-requests-filtered-empty p {
+  max-width: 320px;
+  margin: 6px 0 0;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.blood-requests-filtered-empty__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 38px;
+  margin-top: 16px;
+  padding: 0 14px;
+
+  border: 1px solid var(--lifelynk-border-dark);
+  border-radius: var(--lifelynk-radius-sm);
+
+  background: var(--lifelynk-surface);
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.blood-requests-filtered-empty__clear:hover {
+  background: var(--lifelynk-red-light);
+  color: var(--lifelynk-red);
+}
+
+.blood-requests-filtered-empty__clear svg {
+  width: 13px;
+  height: 13px;
+}
+
+.blood-requests-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 220px;
+
+  margin-top: 24px;
+  padding: 40px 24px;
+
+  border: 1px solid #fecaca;
+  border-radius: var(--lifelynk-radius-lg);
+
+  background: var(--lifelynk-red-light);
+
+  text-align: center;
+}
+
+.blood-requests-error__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  margin-bottom: 16px;
+
+  border-radius: 50%;
+
+  background: #fecaca;
+  color: var(--lifelynk-red);
+}
+
+.blood-requests-error__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.blood-requests-error strong {
+  color: var(--lifelynk-text);
+
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.blood-requests-error p {
+  max-width: 360px;
+  margin: 8px 0 0;
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   MODAL — OVERLAY & CARD
+   ========================================================= */
+
+.blood-requests-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 32px 20px;
+
+  overflow-y: auto;
+
+  background: rgba(15, 23, 42, 0.52);
+
+  animation:
+    blood-requests-overlay-in 0.2s ease-out both;
+}
+
+@keyframes blood-requests-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.blood-requests-modal {
+  width: 100%;
+  max-width: 660px;
+
+  margin: auto;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: var(--lifelynk-radius-xl);
+
+  background: var(--lifelynk-surface);
+
+  box-shadow: var(--lifelynk-shadow-lg);
+
+  animation:
+    blood-requests-modal-in 0.25s ease-out both;
+}
+
+@keyframes blood-requests-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   MODAL — HEADER / BODY / FOOTER
+   ========================================================= */
+
+.blood-requests-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 22px 26px;
+
+  border-bottom: 1px solid var(--lifelynk-border);
+}
+
+.blood-requests-modal__eyebrow {
+  margin: 0 0 4px;
+
+  color: var(--lifelynk-red);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.blood-requests-modal__title {
+  margin: 0;
+
+  color: var(--lifelynk-text);
+
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.blood-requests-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  border: 1px solid var(--lifelynk-border);
+  border-radius: 9px;
+
+  background: var(--lifelynk-surface);
+
+  color: var(--lifelynk-text-muted);
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.blood-requests-modal__close:hover:not(:disabled) {
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text);
+}
+
+.blood-requests-modal__close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.blood-requests-modal__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 26px;
+
+  text-align: center;
+}
+
+.blood-requests-modal__warning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 56px;
+  height: 56px;
+
+  margin-bottom: 16px;
+
+  border-radius: 16px;
+
+  background: var(--lifelynk-red-light);
+  color: var(--lifelynk-red);
+}
+
+.blood-requests-modal__warning svg {
+  width: 26px;
+  height: 26px;
+}
+
+.blood-requests-modal__summary {
+  max-width: 440px;
+  margin: 0;
+
+  color: var(--lifelynk-text);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.blood-requests-modal__summary strong {
+  font-weight: 800;
+}
+
+.blood-requests-modal__warning-text {
+  max-width: 400px;
+  margin: 12px 0 0;
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.blood-requests-modal__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+
+  background: var(--lifelynk-red-light);
+
+  color: #991b1b;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.blood-requests-modal__error svg {
+  flex: 0 0 16px;
+
+  width: 16px;
+  height: 16px;
+
+  margin-top: 1px;
+}
+
+.blood-requests-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+
+  padding: 18px 26px;
+
+  border-top: 1px solid var(--lifelynk-border);
+
+  background: var(--lifelynk-surface-soft);
+}
+
+/* =========================================================
+   MODAL — BUTTONS
+   ========================================================= */
+
+.blood-requests-modal__cancel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 42px;
+  padding: 0 18px;
+
+  border: 1px solid var(--lifelynk-border-dark);
+  border-radius: 10px;
+
+  background: var(--lifelynk-surface);
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.blood-requests-modal__cancel:hover:not(:disabled) {
+  background: var(--lifelynk-surface-soft);
+  color: var(--lifelynk-text);
+}
+
+.blood-requests-modal__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 42px;
+  padding: 0 20px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: var(--lifelynk-red);
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  box-shadow:
+    0 5px 14px rgba(198, 40, 40, 0.18);
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.blood-requests-modal__submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  background: var(--lifelynk-red-dark);
+
+  box-shadow:
+    0 8px 18px rgba(198, 40, 40, 0.22);
+}
+
+.blood-requests-modal__submit:disabled,
+.blood-requests-modal__cancel:disabled,
+.blood-requests-modal__delete:disabled {
+  opacity: 0.65;
+}
+
+.blood-requests-modal__submit svg,
+.blood-requests-modal__delete svg {
+  width: 15px;
+  height: 15px;
+}
+
+.blood-requests-modal__delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 42px;
+  padding: 0 20px;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: var(--lifelynk-red);
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  box-shadow:
+    0 5px 14px rgba(198, 40, 40, 0.18);
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.blood-requests-modal__delete:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  background: var(--lifelynk-red-dark);
+
+  box-shadow:
+    0 8px 18px rgba(198, 40, 40, 0.22);
+}
+
+.blood-requests-modal--danger .blood-requests-modal__eyebrow {
+  color: var(--lifelynk-red);
+}
+
+/* =========================================================
+   MODAL — FORM
+   ========================================================= */
+
+.blood-requests-modal__form {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px 16px;
+
+  padding: 24px 26px 26px;
+}
+
+.blood-requests-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  min-width: 0;
+}
+
+.blood-requests-form-field--full {
+  grid-column: 1 / -1;
+}
+
+.blood-requests-form-field label {
+  color: var(--lifelynk-text);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.blood-requests-form-optional {
+  color: var(--lifelynk-text-muted);
+
+  font-weight: 500;
+}
+
+.blood-requests-form-field input,
+.blood-requests-form-field select,
+.blood-requests-form-field textarea {
+  min-height: 42px;
+  padding: 0 12px;
+
+  border: 1px solid var(--lifelynk-border-dark);
+  border-radius: var(--lifelynk-radius-sm);
+
+  background: var(--lifelynk-surface);
+
+  color: var(--lifelynk-text);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.blood-requests-form-field textarea {
+  min-height: 80px;
+  padding: 10px 12px;
+
+  resize: vertical;
+}
+
+.blood-requests-form-field input[type="date"],
+.blood-requests-form-field input[type="datetime-local"] {
+  cursor: pointer;
+}
+
+.blood-requests-form-static {
+  display: flex;
+  align-items: center;
+
+  min-height: 42px;
+  padding: 0 12px;
+
+  border: 1px dashed var(--lifelynk-border-dark);
+  border-radius: 10px;
+
+  background: var(--lifelynk-surface-soft);
+
+  color: var(--lifelynk-text-secondary);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.blood-requests-form-hint {
+  color: var(--lifelynk-text-muted);
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.blood-requests-form-no-patients {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  min-height: 42px;
+  padding: 10px 12px;
+
+  border: 1px dashed var(--lifelynk-border-dark);
+  border-radius: 10px;
+
+  background: var(--lifelynk-surface-soft);
+
+  color: var(--lifelynk-text-muted);
+
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.blood-requests-form-no-patients svg {
+  flex: 0 0 18px;
+
+  width: 18px;
+  height: 18px;
+
+  margin-top: 1px;
+
+  color: var(--lifelynk-text-muted);
+}
+
+/* =========================================================
+   SPINNER
+   ========================================================= */
+
+.blood-requests-spin {
+  animation:
+    blood-requests-spin 0.8s linear infinite;
+}
+
+@keyframes blood-requests-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — LARGE TABLETS (1100px)
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .blood-requests-page {
+    padding: 28px 24px 42px;
+  }
+
+  .blood-requests-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .blood-requests-filters {
+    flex-wrap: wrap;
+  }
+
+  .blood-requests-filters__field {
+    flex: 1 1 180px;
+  }
+
+  .blood-requests-filters__field--search {
+    flex: 1 1 240px;
+  }
+
+  .blood-requests-table th,
+  .blood-requests-table td {
+    padding: 13px 12px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — TABLETS (768px)
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .blood-requests-page {
+    padding: 20px 16px 36px;
+  }
+
+  .blood-requests-header {
+    flex-direction: column;
+
+    padding: 22px 20px;
+    border-radius: 14px;
+  }
+
+  .blood-requests-header__icon {
+    flex-basis: 44px;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  .blood-requests-header__icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .blood-requests-header__title {
+    font-size: 22px;
+  }
+
+  .blood-requests-header__description {
+    font-size: 13px;
+  }
+
+  .blood-requests-add-button {
+    width: 100%;
+  }
+
+  .blood-requests-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .blood-requests-stat {
+    min-height: 100px;
+    padding: 18px;
+  }
+
+  .blood-requests-records__header {
+    padding: 18px;
+  }
+
+  .blood-requests-filters {
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 14px 18px;
+  }
+
+  .blood-requests-filters__clear {
+    width: 100%;
+  }
+
+  /* Switch from table to cards */
+  .blood-requests-table-wrap {
+    display: none;
+  }
+
+  .blood-requests-cards {
+    display: block;
+  }
+
+  .blood-requests-modal-overlay {
+    padding: 20px 12px;
+  }
+
+  .blood-requests-modal__form {
+    grid-template-columns: 1fr;
+
+    padding: 20px 20px 22px;
+  }
+
+  .blood-requests-modal__header {
+    padding: 18px 20px;
+  }
+
+  .blood-requests-modal__footer {
+    padding: 16px 20px;
+  }
+
+  .blood-requests-modal__cancel,
+  .blood-requests-modal__submit,
+  .blood-requests-modal__delete {
+    flex: 1;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE (480px)
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .blood-requests-page {
+    padding: 16px 12px 30px;
+  }
+
+  .blood-requests-header {
+    padding: 18px 16px;
+    border-radius: 12px;
+  }
+
+  .blood-requests-header__content {
+    gap: 14px;
+  }
+
+  .blood-requests-header__icon {
+    flex-basis: 40px;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+  }
+
+  .blood-requests-header__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .blood-requests-header__title {
+    font-size: 19px;
+  }
+
+  .blood-requests-header__eyebrow {
+    font-size: 10px;
+  }
+
+  .blood-requests-header__description {
+    font-size: 12px;
+  }
+
+  .blood-requests-stat {
+    border-radius: 14px;
+  }
+
+  .blood-requests-stat__icon {
+    flex-basis: 42px;
+
+    width: 42px;
+    height: 42px;
+  }
+
+  .blood-requests-stat__icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .blood-requests-stat__content strong {
+    font-size: 22px;
+  }
+
+  .blood-requests-stat__label {
+    top: 11px;
+    right: 11px;
+  }
+
+  .blood-requests-card__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blood-requests-modal__footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .blood-requests-fade-in,
+  .blood-requests-modal-overlay,
+  .blood-requests-modal,
+  .blood-requests-spin {
+    animation: none;
+  }
+
+  .blood-requests-stat,
+  .blood-requests-icon-button,
+  .blood-requests-table tbody tr {
+    transition: none;
+  }
+}

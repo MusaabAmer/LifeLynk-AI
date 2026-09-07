@@ -1,0 +1,182 @@
+/* =========================================================
+   LifeLynk AI
+   Verification Pending Page
+   ========================================================= */
+
+.lifelynk-auth {
+  min-height: 100vh;
+  width: 100%;
+  padding: 32px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(198, 40, 40, 0.06),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 90%,
+      rgba(30, 136, 229, 0.05),
+      transparent 30%
+    ),
+    #f7f9fc;
+}
+
+/* ---------------------------------------------------------
+   Card
+   --------------------------------------------------------- */
+
+.lifelynk-auth__card {
+  width: 100%;
+  max-width: 620px;
+
+  padding: 44px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e9f0;
+  border-radius: 22px;
+
+  box-shadow:
+    0 20px 55px rgba(15, 23, 42, 0.08),
+    0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+
+
+
+
+/* ---------------------------------------------------------
+   Heading
+   --------------------------------------------------------- */
+
+.lifelynk-auth__heading {
+  text-align: center;
+}
+
+.lifelynk-auth__heading h1 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 32px;
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.lifelynk-auth__heading > p {
+  margin: 14px auto 0;
+
+  max-width: 500px;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ---------------------------------------------------------
+   Status icon
+   --------------------------------------------------------- */
+
+.lifelynk-auth__heading::before {
+  content: "✓";
+
+  width: 62px;
+  height: 62px;
+
+  margin: 0 auto 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff3f3;
+  border: 1px solid #ffd8d8;
+
+  color: #c62828;
+
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* ---------------------------------------------------------
+   Success / Pending message
+   --------------------------------------------------------- */
+
+.lifelynk-auth__success {
+  margin-top: 28px;
+  padding: 22px 24px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #c62828;
+
+  border-radius: 14px;
+
+  text-align: left;
+}
+
+.lifelynk-auth__success strong {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #172033;
+
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.lifelynk-auth__success p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.lifelynk-auth__success p + p {
+  margin-top: 12px;
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  .lifelynk-auth {
+    padding: 20px 14px;
+  }
+
+  .lifelynk-auth__card {
+    padding: 32px 22px;
+
+    border-radius: 18px;
+  }
+
+
+
+  .lifelynk-auth__heading h1 {
+    font-size: 27px;
+  }
+
+  .lifelynk-auth__heading > p {
+    font-size: 14px;
+  }
+
+  .lifelynk-auth__success {
+    padding: 18px 18px;
+  }
+}
+

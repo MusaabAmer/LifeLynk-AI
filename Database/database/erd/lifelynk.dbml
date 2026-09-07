@@ -1,0 +1,55 @@
+Table roles {
+  id uuid [pk]
+  name varchar(50) [not null, unique]
+  description text
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+}
+
+Enum account_status {
+  ACTIVE
+  INACTIVE
+  LOCKED
+}
+
+Table users {
+  id uuid [pk]
+  role_id uuid [not null, ref: > roles.id]
+
+  email varchar(255) [not null, unique]
+  password_hash text [not null]
+
+  is_email_verified boolean [not null, default: false]
+
+  account_status account_status [not null, default: 'ACTIVE']
+
+  last_login_at timestamptz
+
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+  deleted_at timestamptz
+}
+
+Table permissions {
+  id uuid [pk]
+  name varchar(100) [not null, unique]
+  description text
+
+  created_at timestamptz [not null]
+  updated_at timestamptz [not null]
+}
+
+Table role_permissions {
+
+  role_id uuid
+  permission_id uuid
+
+  created_at timestamptz
+
+  Indexes {
+
+    (role_id, permission_id) [pk]
+
+  }
+
+}
